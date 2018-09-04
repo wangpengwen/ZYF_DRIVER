@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/dp_10"
+    android:divider="@drawable/divider_gray_1_height"
+    android:showDividers="middle">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="45dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:paddingLeft="@dimen/dp_10"
+            android:drawableRight="@drawable/must_mark"
+            android:textSize="16sp"
+            android:textColor="@color/color_333333"
+            android:text="名称"/>
+
+        <EditText
+            android:id="@+id/tv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:hint="请输入货物名称"
+            android:paddingLeft="@dimen/dp_10"
+            android:textSize="16sp"
+            android:textColor="@color/color_999999"
+            android:background="@color/color_transparent"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="45dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:paddingLeft="@dimen/dp_10"
+            android:drawableRight="@drawable/must_mark"
+
+            android:textSize="16sp"
+            android:textColor="@color/color_333333"
+            android:text="起点"/>
+
+        <TextView
+            android:id="@+id/tv_start"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:paddingLeft="@dimen/dp_10"
+            android:hint="请输入货物起点"
+            android:textSize="16sp"
+            android:textColor="@color/color_999999"
+            android:background="@color/color_transparent"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="45dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:paddingLeft="@dimen/dp_10"
+            android:drawableRight="@drawable/must_mark"
+            android:textSize="16sp"
+            android:textColor="@color/color_333333"
+            android:text="终点"/>
+
+        <TextView
+            android:id="@+id/tv_end"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:paddingLeft="@dimen/dp_10"
+            android:hint="请输入货物终点"
+            android:textSize="16sp"
+            android:textColor="@color/color_999999"
+            android:background="@color/color_transparent"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="45dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:paddingLeft="@dimen/dp_10"
+            android:textSize="16sp"
+            android:textColor="@color/color_333333"
+            android:text="指定车辆"/>
+
+        <TextView
+            android:id="@+id/tv_car_num"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:paddingLeft="@dimen/dp_10"
+            android:hint="指定货车"
+            android:textSize="16sp"
+            android:textColor="@color/color_999999"
+            android:background="@color/color_transparent"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_confirm"
+        android:layout_width="250dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@mipmap/btn_bg"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:text="创建完成"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        />
+
+
+</LinearLayout>

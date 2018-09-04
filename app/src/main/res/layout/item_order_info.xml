@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?attr/selectableItemBackground"
+    android:divider="@drawable/divider_gray_1_width"
+    android:gravity="center_vertical"
+    android:showDividers="middle">
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="24dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:button="@drawable/ic_checkbox_selector"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        tools:text="运单号"
+        android:textColor="@color/color_999999"
+        android:textSize="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_goods_num"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        android:visibility="gone"
+        tools:text="货号"
+        android:textColor="@color/color_999999"
+        android:textSize="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_start"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        tools:text="发货地点"
+        android:textColor="@color/color_999999"
+        android:textSize="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_end"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        tools:text="目的网点"
+        android:textColor="@color/color_999999"
+        android:textSize="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_goods_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        tools:text="货物名称"
+        android:textColor="@color/color_999999"
+        android:textSize="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_num"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        tools:text="数量"
+        android:textColor="@color/color_999999"
+        android:textSize="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_sender"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        tools:text="发货方"
+        android:textColor="@color/color_999999"
+        android:textSize="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_sender_contact"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        android:visibility="gone"
+        tools:text="发货方联系方式"
+        android:textColor="@color/color_999999"
+        android:textSize="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_receipients"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        tools:text="收货方"
+        android:textColor="@color/color_999999"
+        android:textSize="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_receipients_contact"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        android:visibility="gone"
+        tools:text="收货方联系方式"
+        android:textColor="@color/color_999999"
+        android:textSize="10dp"/>
+
+</LinearLayout>

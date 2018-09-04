@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="settingsItemView">
+        <attr name="hasNextIcon" format="boolean" />
+        <attr name="titleText" format="reference" />
+        <attr name="subTitleText" format="reference" />
+        <attr name="subTitleHintText" format="reference" />
+    </declare-styleable>
+
+
+    <!--<declare-styleable name="DashView">-->
+        <!--<attr name="dashWidth" format="dimension"/>-->
+        <!--<attr name="lineWidth" format="dimension"/>-->
+        <!--<attr name="lineHeight" format="dimension"/>-->
+        <!--<attr name="lineColor" format="color"/>-->
+        <!--<attr name="dashOrientation" format="integer"/>-->
+    <!--</declare-styleable>-->
+
+    <!--<declare-styleable name="NumberCodeView">-->
+        <!--<attr name="isPassword" format="boolean"/>-->
+    <!--</declare-styleable>-->
+
+
+    <!--<declare-styleable name="androidWheelView">-->
+        <!--<attr name="awv_textsize" format="integer" />-->
+        <!--<attr name="awv_lineSpace" format="float" />-->
+        <!--<attr name="awv_centerTextColor" format="integer" />-->
+        <!--<attr name="awv_outerTextColor" format="integer" />-->
+        <!--<attr name="awv_dividerTextColor" format="integer" />-->
+        <!--<attr name="awv_itemsVisibleCount" format="integer" />-->
+        <!--<attr name="awv_isLoop" format="boolean" />-->
+        <!--<attr name="awv_initialPosition" format="integer" />-->
+        <!--<attr name="awv_scaleX" format="float" />-->
+    <!--</declare-styleable>-->
+
+
+
+
+    <!--<declare-styleable name="StarProgressBar">-->
+        <!--//星星数量-->
+        <!--<attr format="integer" name="totalNum"/>-->
+        <!--//星星宽度-->
+        <!--<attr format="dimension" name="iconWidth"/>-->
+        <!--//星星高度-->
+        <!--<attr format="dimension" name="iconHeight"/>-->
+        <!--//星星间距-->
+        <!--<attr format="dimension" name="iconPadding"/>-->
+        <!--//星星背景-->
+        <!--<attr format="reference" name="iconBackground"/>-->
+        <!--//星星变化背景-->
+        <!--<attr format="reference" name="iconDrawBackground"/>-->
+        <!--//星星变化背景-->
+        <!--<attr format="reference" name="iconFullDrawBackground"/>-->
+        <!--//控件是否可以点击-->
+        <!--<attr format="boolean" name="isClickable"/>-->
+        <!--<attr name="stepSize" format="float"/>-->
+        <!--<attr name="score" format="float"/>-->
+
+    <!--</declare-styleable>-->
+</resources>

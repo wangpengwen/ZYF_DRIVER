@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?attr/selectableItemBackground"
+    android:divider="@drawable/divider_gray_1_width"
+    android:gravity="center_vertical"
+    android:showDividers="middle">
+
+    <TextView
+        android:id="@+id/tv_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        tools:text="货单号"
+        android:textColor="@color/color_999999"
+        android:textSize="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        tools:text="货单名称"
+        android:textColor="@color/color_999999"
+        android:textSize="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_start"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        tools:text="起始站点"
+        android:textColor="@color/color_999999"
+        android:textSize="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_end"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        tools:text="目标站点"
+        android:textColor="@color/color_999999"
+        android:textSize="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_goods_num"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        tools:text="货物数量"
+        android:textColor="@color/color_999999"
+        android:textSize="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_car"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        tools:text="指定车辆"
+        android:textColor="@color/color_999999"
+        android:textSize="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_goods_status"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        android:visibility="gone"
+        tools:text="货单状态"
+        android:textColor="@color/color_999999"
+        android:textSize="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_receipt_status"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        android:visibility="gone"
+        tools:text="回单状态"
+        android:textColor="@color/color_999999"
+        android:textSize="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_create_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="2dp"
+        tools:text="生成时间"
+        android:textColor="@color/color_999999"
+        android:textSize="10dp"/>
+
+</LinearLayout>

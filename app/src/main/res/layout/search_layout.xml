@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/search_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <com.biz.widget.CountEditText
+        android:id="@+id/edit_search"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/shape_corner_white_background"
+        android:drawableLeft="@drawable/ic_tool_search"
+        android:drawablePadding="15dp"
+        android:gravity="left|center_vertical"
+        android:hint="@string/text_search_hint"
+        android:imeOptions="actionSearch"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:singleLine="true"
+        android:textColor="@color/color_1a1a1a"
+        android:textColorHint="@color/color_999999"
+        android:textSize="13dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="1px"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="30dp"
+        android:background="@color/color_b9b9b9"
+        app:layout_constraintBottom_toBottomOf="@+id/edit_search"
+        app:layout_constraintLeft_toLeftOf="@+id/edit_search"
+        app:layout_constraintTop_toTopOf="@+id/edit_search" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_search"
+        app:layout_constraintBottom_toBottomOf="@+id/edit_search"
+        app:layout_constraintEnd_toEndOf="@+id/edit_search"
+        app:layout_constraintTop_toTopOf="@+id/edit_search" />
+
+</android.support.constraint.ConstraintLayout>
+

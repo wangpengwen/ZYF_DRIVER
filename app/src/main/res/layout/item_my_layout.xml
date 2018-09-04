@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:foreground="?attr/selectableItemBackground"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/title"
+        tools:text="优惠券"
+        android:textColor="@color/color_1a1a1a"
+        android:textSize="14dp"
+        android:layout_marginRight="100dp"
+        android:gravity="center_vertical"
+        android:drawablePadding="10dp"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/text"
+        tools:text="2张"
+        android:textColor="@color/color_4d4d4d"
+        android:textSize="14dp"
+        android:singleLine="true"
+        android:layout_gravity="right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</FrameLayout>

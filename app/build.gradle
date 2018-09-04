@@ -1,0 +1,114 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'zywl'
+            keyPassword 'zywl123'
+            storeFile file('../keystore.jks')
+            storePassword 'zywl123'
+        }
+    }
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.zyf.driver"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion 22
+        versionCode Integer.valueOf(VERSION_CODE)
+        versionName VERSION_NAME
+        vectorDrawables.useSupportLibrary = true
+
+        multiDexEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation":
+                                     "$projectDir/schemas".toString()]
+            }
+        }
+    }
+    buildTypes {
+
+        debug {
+
+            resValue("string", "defualt_http_url", HTTP_RELEASE_URL);
+            resValue("string", "qrcode_pre_url", HTTP_QRCODE_URL);
+        }
+
+        release {
+            debuggable true
+            resValue("string", "def_url_config_name", "com.zyf.driver.release.txt")
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.config
+            resValue("string", "defualt_http_url", HTTP_RELEASE_URL);
+            resValue("string", "qrcode_pre_url", HTTP_QRCODE_URL);
+        }
+    }
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'armeabi'
+            universalApk false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            java.srcDirs = ['src/main/java']
+        }
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    buildToolsVersion '27.0.3'
+}
+
+//作用是添加一个本地仓库,并把libs目录当做仓库地址 C.在dependencies 里加一行代码
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api project(':core')
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation "com.jakewharton:butterknife:${BUTTER_VERSION}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${BUTTER_VERSION}"
+    implementation 'com.android.support:multidex:1.0.2'
+    implementation 'com.youth.banner:banner:1.4.10'
+    //最新版本
+    //MPChart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    //room
+    implementation 'android.arch.persistence.room:runtime:1.1.0'
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.0"
+    implementation "com.github.bumptech.glide:glide:${GLIDE_VERSION}"
+    annotationProcessor "com.github.bumptech.glide:compiler:${GLIDE_VERSION}"
+    implementation("com.github.bumptech.glide:okhttp3-integration:${GLIDE_VERSION}") {
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+
+    }
+    implementation 'com.google.zxing:core:3.3.0'
+    implementation 'cn.bingoogolapple:bga-qrcodecore:1.1.9@aar'
+    implementation 'cn.bingoogolapple:bga-zxing:1.1.9@aar'
+    implementation 'com.github.chihane:JDAddressSelector:1.1.4'
+    implementation(name: 'neolixlibrary-debug', ext: 'aar')
+    implementation files('libs/Android_KM300BU_SDK_CPCL_V0.2.jar')
+}

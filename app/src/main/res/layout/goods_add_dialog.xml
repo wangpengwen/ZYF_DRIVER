@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="12dp"
+    android:paddingRight="10dp"
+    android:background="@drawable/shape_corner_white_background_no_stroke">
+
+    <ImageView
+        android:id="@+id/iv_close"
+        android:layout_width="26dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="21dp"
+        android:layout_marginTop="21dp"
+        android:src="@mipmap/ic_close" />
+
+    <LinearLayout
+        android:id="@+id/layout_goods_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/color_999999"
+            android:textSize="15sp"
+            android:text="物品名称"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_line"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="9dp"/>
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="6dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButton1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_corner_blue_bg"
+                    android:button="@null"
+                    android:checked="false"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:text="日用品"
+                    android:textColor="@color/color_text_choose_selector"
+                    android:textSize="13sp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_corner_blue_bg"
+                    android:button="@null"
+                    android:checked="false"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:text="数码产品"
+                    android:textColor="@color/color_text_choose_selector"
+                    android:textSize="13sp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_corner_blue_bg"
+                    android:textColor="@color/color_text_choose_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:text="服装"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButton4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_corner_blue_bg"
+                    android:textColor="@color/color_text_choose_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:text="建材"
+                    android:textSize="13sp"/>
+
+                <RadioButton
+                    android:id="@+id/radioButton5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_corner_blue_bg"
+                    android:textColor="@color/color_text_choose_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:text="汽车配件"
+                    android:textSize="13sp"/>
+
+                <RadioButton
+                    android:id="@+id/radioButton6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_corner_blue_bg"
+                    android:textColor="@color/color_text_choose_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:text="其他"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/layout_other_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/divider_gray_1_width"
+            android:orientation="horizontal"
+            android:showDividers="middle"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/color_transparent"
+                android:gravity="center_vertical"
+                android:hint="请输入物品名称"
+                android:minHeight="47dp"
+                android:paddingLeft="25dp"
+                android:textColor="@color/color_666666"
+                android:textColorHint="@color/color_cccccc"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/btn_name_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:minWidth="86dp"
+                android:text="确定"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_goods_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_line" />
+
+        <LinearLayout
+            android:id="@+id/layout_goods_name_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?attr/selectableItemBackground"
+            android:minHeight="45dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableRight="@drawable/must_mark"
+                android:drawablePadding="@dimen/dp_10"
+                android:text="物品名称"
+                android:textColor="@color/color_333333"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_goods_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:hint="请选择商品名称"
+                android:textColor="@color/color_999999"
+                android:textSize="15sp" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="25dp"
+                app:srcCompat="@drawable/vector_array_right_333" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="45dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="物品重量"
+                android:textColor="@color/color_333333"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/et_weight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/color_transparent"
+                android:gravity="right|center_vertical"
+                android:hint="请输入重量"
+                android:inputType="numberDecimal"
+                android:maxLength="7"
+                android:textColor="@color/color_999999"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="kg"
+                android:textColor="@color/color_666666"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="45dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/must_mark"
+                android:drawablePadding="@dimen/dp_10"
+                android:text="件数"
+                android:textColor="@color/color_333333"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/et_num"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/color_transparent"
+                android:gravity="right|center_vertical"
+                android:hint="请输入件数"
+                android:inputType="number"
+                android:maxLength="7"
+                android:textColor="@color/color_999999"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="件"
+                android:textColor="@color/color_666666"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_line" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="45dp"
+            android:text="请度量物品包装的长*宽*高，并填入："
+            android:textColor="@color/color_999999"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="45dp"
+            android:orientation="horizontal"
+            android:weightSum="8">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@drawable/shape_corner_gray_background"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_length"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/color_transparent"
+                    android:hint="长"
+                    android:inputType="numberDecimal"
+                    android:maxLength="5"
+                    android:textColor="@color/color_666666"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:text="m"
+                    android:textColor="@color/color_666666"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="*"
+                android:textColor="@color/color_666666"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@drawable/shape_corner_gray_background"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_width"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/color_transparent"
+                    android:hint="宽"
+                    android:inputType="numberDecimal"
+                    android:maxLength="5"
+                    android:textColor="@color/color_666666"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:text="m"
+                    android:textColor="@color/color_666666"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="*"
+                android:textColor="@color/color_666666"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@drawable/shape_corner_gray_background"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_height"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/color_transparent"
+                    android:hint="高"
+                    android:inputType="numberDecimal"
+                    android:maxLength="5"
+                    android:textColor="@color/color_666666"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:text="m"
+                    android:textColor="@color/color_666666"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="计算重量"
+                android:textColor="@color/color_333333"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_size_weight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="36dp"
+                android:layout_weight="1"
+                android:textColor="@color/red_light"
+                android:textSize="14sp"
+                tools:text="7.86" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="kg"
+                android:textColor="@color/color_666666"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.体积较大物品，须按物品包装后的体积计算重量"
+            android:textColor="@color/color_999999"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="2.体积重量（kg）的计算方法为：长度（m）X 宽度（m）X 高度（m）除以6"
+            android:textColor="@color/color_999999"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/btn_confirm"
+            android:layout_width="250dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@mipmap/btn_bg"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_cancel" />
+
+    </LinearLayout>
+
+</LinearLayout>

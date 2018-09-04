@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+    android:background="@color/white">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chart"
+            android:background="@color/color_f5f5f5"
+            android:padding="1px">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/key1_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="15dp"
+                    android:background="@color/white"
+                    android:layout_marginRight="1px"
+                    android:textColor="@color/color_333333"
+                    android:textSize="20sp"
+                    tools:text="当日实收"/>
+
+                <TextView
+                    android:id="@+id/value1_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="15dp"
+                    android:background="@color/white"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    tools:text="108.8"/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/key2_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="15dp"
+                    android:background="@color/white"
+                    android:layout_marginRight="1px"
+                    android:textColor="@color/color_333333"
+                    android:textSize="20sp"
+                    tools:text="当日实收"/>
+
+                <TextView
+                    android:id="@+id/value2_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="15dp"
+                    android:background="@color/white"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    tools:text="108.8"/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/key3_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="15dp"
+                    android:background="@color/white"
+                    android:layout_marginRight="1px"
+                    android:textColor="@color/color_333333"
+                    android:textSize="20sp"
+                    tools:text="当日实收"/>
+
+                <TextView
+                    android:id="@+id/value3_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="15dp"
+                    android:background="@color/white"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    tools:text="108.8"/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/key4_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="15dp"
+                    android:background="@color/white"
+                    android:layout_marginRight="1px"
+                    android:textColor="@color/color_333333"
+                    android:textSize="20sp"
+                    tools:text="当日实收"/>
+
+                <TextView
+                    android:id="@+id/value4_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="15dp"
+                    android:background="@color/white"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    tools:text="108.8"/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/key5_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="15dp"
+                    android:background="@color/white"
+                    android:layout_marginRight="1px"
+                    android:textColor="@color/color_333333"
+                    android:textSize="20sp"
+                    tools:text="当日实收"/>
+
+                <TextView
+                    android:id="@+id/value5_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="15dp"
+                    android:background="@color/white"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    tools:text="108.8"/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/key6_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="15dp"
+                    android:background="@color/white"
+                    android:layout_marginRight="1px"
+                    android:textColor="@color/color_333333"
+                    android:textSize="20sp"
+                    tools:text="当日实收"/>
+
+                <TextView
+                    android:id="@+id/value6_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="15dp"
+                    android:background="@color/white"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    tools:text="108.8"/>
+
+            </TableRow>
+
+        </TableLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
+

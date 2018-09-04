@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView android:id="@+id/tex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="信息显示区" />
+    
+    <Button android:id="@+id/nfcbtn"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tex"
+        android:layout_marginTop="50dp"
+        android:text="NFC读卡"/>
+    
+     <Button android:id="@+id/btbtn"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nfcbtn"
+        android:layout_centerHorizontal="true"
+        android:text="蓝牙初始化"/>
+     
+      <Button android:id="@+id/ljbtn"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btbtn"
+        android:layout_toLeftOf="@+id/dkbtn"
+        android:text="连接蓝牙"/>
+      
+      <Button android:id="@+id/dkbtn"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btbtn"
+        android:text="蓝牙读卡"/>
+      <Button android:id="@+id/disbtn"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btbtn"
+        android:layout_toRightOf="@+id/dkbtn"
+        android:text="断开蓝牙"/>
+
+</RelativeLayout>
