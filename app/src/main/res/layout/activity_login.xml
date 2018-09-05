@@ -6,7 +6,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context="com.zywl.ui.login.LoginActivity">
+    tools:context="com.zyf.ui.login.LoginActivity">
 
     <!-- Login progress -->
     <ProgressBar

@@ -12,7 +12,7 @@
                   android:layout_height="match_parent"
                   android:orientation="vertical">
 
-        <com.zywl.widget.SettingsItemView
+        <com.zyf.widget.SettingsItemView
             android:id="@+id/clearCacheBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
             app:titleText="@string/text_clear_cache"
             />
 
-        <com.zywl.widget.SettingsItemView
+        <com.zyf.widget.SettingsItemView
             android:id="@+id/versionBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
             app:titleText="@string/text_version_code"
             />
 
-        <com.zywl.widget.SettingsItemView
+        <com.zyf.widget.SettingsItemView
             android:id="@+id/aboutBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

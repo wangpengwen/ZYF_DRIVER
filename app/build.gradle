@@ -20,6 +20,10 @@ android {
         versionName VERSION_NAME
         vectorDrawables.useSupportLibrary = true
 
+        resValue("string", "oss_bucket", "zyf-driver-dev")
+        resValue("string", "oss_ak", "LTAIOxcunsRGBb3b")
+        resValue("string", "oss_sk", "VsUZIkJj1WyezIfsRETSSUmiImiv9b")
+
         multiDexEnabled true
 
         javaCompileOptions {
