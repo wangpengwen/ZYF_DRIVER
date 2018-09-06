@@ -27,7 +27,7 @@ import rx.subscriptions.CompositeSubscription;
  */
 public class LoginActivity extends BaseLiveDataActivity<LoginViewModel> {
 
-    Fragment mPasswordLoginFragment;
+    Fragment mShortcutLoginFragment;
     public static final int REQUEST_REGISTER=1101;
     private boolean isLoginOut=false;
     protected Boolean isFirst = true;
@@ -81,8 +81,8 @@ public class LoginActivity extends BaseLiveDataActivity<LoginViewModel> {
 //            onBackPressed();
 //        });
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.frame_holder, mPasswordLoginFragment =new PasswordLoginFragment(),
-                        PasswordLoginFragment.class.getName())
+                .add(R.id.frame_holder, mShortcutLoginFragment =new ShortcutLoginFragment(),
+                        ShortcutLoginFragment.class.getName())
                 .commitAllowingStateLoss();
         mViewModel.getLoginStatus().observe(this, this::loginResponse);
         mViewModel.loadHisUser();
@@ -94,7 +94,6 @@ public class LoginActivity extends BaseLiveDataActivity<LoginViewModel> {
     }
     private void loginResponse(boolean b){
         if (b) {
-            //IntentBuilder.Builder().startParentActivity(getActivity(), TestFragment.class);
             startActivity(new Intent(getActivity(), MainActivity.class));
             finish();
         }

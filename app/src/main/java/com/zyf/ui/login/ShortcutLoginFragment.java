@@ -11,8 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.biz.base.BaseLazyFragment;
+import com.biz.util.IntentBuilder;
 import com.biz.util.RxUtil;
 import com.zyf.driver.ui.R;
+import com.zyf.ui.user.register.RegisterPhoneVerifyFragment;
+
+import static com.zyf.ui.login.LoginActivity.REQUEST_REGISTER;
 
 
 /**
@@ -51,6 +55,7 @@ public class ShortcutLoginFragment extends BaseLazyFragment<LoginViewModel> {
         mViewHolder.setEditUsernameChangeListener();
 //        mViewHolder.setForgetPwdListener();
         mViewHolder.setLoginListener(this::login);
+        mViewHolder.setSignUpListener(this::signUp);
         mViewHolder.setCodeListener(o->{
             mViewModel.setMobile(mViewHolder.getUsername());
             mViewModel.sendSms();});
@@ -96,7 +101,9 @@ public class ShortcutLoginFragment extends BaseLazyFragment<LoginViewModel> {
         mViewModel.smsLogin();
     }
 
-
+    private void signUp(Object o){
+        IntentBuilder.Builder().startParentActivity(getActivity(), RegisterPhoneVerifyFragment.class,REQUEST_REGISTER);
+    }
 
     @Override
     public void onDestroyView() {
