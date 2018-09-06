@@ -1,12 +1,15 @@
 package com.zyf.ui.login;
 
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.biz.base.BaseViewHolder;
 import com.biz.util.RxUtil;
+import com.biz.widget.CustomCountDownTimer;
 import com.zyf.driver.ui.R;
 
 import butterknife.BindView;
@@ -34,6 +37,14 @@ public class LoginViewHolder extends BaseViewHolder {
     EditText editPwd;
     @BindView(R.id.sign_in_button)
     Button btnLogin;
+    @BindView(R.id.sign_up_button)
+    Button btnSignUp;
+
+    @Nullable
+    @BindView(R.id.btn_code)
+    TextView verificationCode;
+
+    private CustomCountDownTimer mDownTimer;
 
     Unbinder unbinder;
 
@@ -41,6 +52,8 @@ public class LoginViewHolder extends BaseViewHolder {
     public LoginViewHolder(View itemView) {
         super(itemView);
         unbinder = ButterKnife.bind(this, itemView);
+        mDownTimer = new CustomCountDownTimer(getActivity(),
+                verificationCode, R.string.text_send_code, R.string.btn_resend_count, 60000, 1000);
         btnLogin.setEnabled(false);
 
 //        editUsername.setText("sysuser");
@@ -65,16 +78,16 @@ public class LoginViewHolder extends BaseViewHolder {
 //        );
 //    }
 //
-//    public void setCodeListener(Action1<Object> status){
-//        RxUtil.click(verificationCode).subscribe(s->{
-//            Observable.just(new Object()).subscribe(status);
-//        });
-//    }
-//
-//
-//    public CustomCountDownTimer getDownTimer() {
-//        return mDownTimer;
-//    }
+    public void setCodeListener(Action1<Object> status){
+        RxUtil.click(verificationCode).subscribe(s->{
+            Observable.just(new Object()).subscribe(status);
+        });
+    }
+
+
+    public CustomCountDownTimer getDownTimer() {
+        return mDownTimer;
+    }
 
     public String getUsername(){
         return editUsername.getText().toString();
@@ -88,6 +101,10 @@ public class LoginViewHolder extends BaseViewHolder {
 
     public void setLoginListener(Action1<Object> login){
         RxUtil.click(btnLogin).subscribe(login);
+    }
+
+    public void setSignUpListener(Action1<Object> signUp){
+        RxUtil.click(btnSignUp).subscribe(signUp);
     }
 
 //    public void setShowPwdListener(){

@@ -296,25 +296,22 @@ public class UserModel {
     }
 
 
-//    public static Observable<ResponseJson<UserEntity>> smsLogin(String mobile, String smsCode) {
-//        return RestRequest.<ResponseJson<UserEntity>>builder()
-//                .addBody("mobile", mobile)
-//                .addBody("channelCode", "APP")
-//                .addBody("smsCode", smsCode)
-//                .addBody("deviceToken", PushManager.getInstance().getPushTag())
-//                .url("/users/smsCodeLogin")
-//                .restMethod(RestMethodEnum.POST)
-//                .setToJsonType(new TypeToken<ResponseJson<UserEntity>>() {
-//                }.getType())
-//                .requestJson().map(r -> {
-//                    if (r.isOk()) {
-//                        UserModel.getInstance().setUserEntity(r.data);
-//                        requestCart();
-//                        EventBus.getDefault().post(new LoginEvent());
-//                    }
-//                    return r;
-//                });
-//    }
+    public static Observable<ResponseJson<UserEntity>> smsLogin(String mobile, String smsCode) {
+        return RestRequest.<ResponseJson<UserEntity>>builder()
+                .addBody("driverPhone", mobile)
+                .addBody("code", smsCode)
+                .url("/driver/smsLongin.do")
+                .restMethod(RestMethodEnum.POST)
+                .setToJsonType(new TypeToken<ResponseJson<UserEntity>>() {
+                }.getType())
+                .requestJson().map(r -> {
+                    if (r.isOk()) {
+                        UserModel.getInstance().setUserEntity(r.data);
+                        EventBus.getDefault().post(new LoginEvent());
+                    }
+                    return r;
+                });
+    }
 
 //    public static Observable<ResponseJson<UserEntity>> autoLoginObservable() {
 //        return RestRequest.<ResponseJson<UserEntity>>builder()
@@ -348,17 +345,6 @@ public class UserModel {
                 .requestJson();
     }
 
-    public static Observable<ResponseJson<Object>> clearFootPrint() {
-        return RestRequest.<ResponseJson<Object>>builder()
-                .url("/users/footprint/clear")
-                .userId(getInstance().getUserId())
-                .restMethod(RestMethodEnum.POST)
-                .setToJsonType(new TypeToken<ResponseJson<Object>>() {
-                }.getType())
-                .requestJson();
-    }
-
-
     public static Observable<ResponseJson<Object>> loginOutOb() {
         return RestRequest.<ResponseJson<Object>>builder()
                 .url("/users/logout")
@@ -369,26 +355,11 @@ public class UserModel {
                 .requestJson();
     }
 
-    public static Observable<ResponseJson<UserEntity>> registerUser(String account, String password, String smsCode) {
+    public static Observable<ResponseJson<UserEntity>> registerUser(String phone, String smsCode) {
         return RestRequest.<ResponseJson<UserEntity>>builder()
-                .addBody("account", account)
-                .addBody("password", password)
-                .addBody("smsCode", smsCode)
-                .url("/users/register")
-                .userId(getInstance().getUserId())
-                .restMethod(RestMethodEnum.POST)
-                .setToJsonType(new TypeToken<ResponseJson<UserEntity>>() {
-                }.getType())
-                .requestJson();
-    }
-
-    public static Observable<ResponseJson<UserEntity>> registerUser(String account, String smsCode) {
-        return RestRequest.<ResponseJson<UserEntity>>builder()
-                .addBody("mobile", account)
-                .addBody("smsCode", smsCode)
-                .addBody("channelCode", "APP")
-                .url("/users/register")
-                .userId(getInstance().getUserId())
+                .addBody("driverPhone", phone)
+                .addBody("code", smsCode)
+                .url("/driver/smsLongin.do")
                 .restMethod(RestMethodEnum.POST)
                 .setToJsonType(new TypeToken<ResponseJson<UserEntity>>() {
                 }.getType())
@@ -418,114 +389,6 @@ public class UserModel {
                 }.getType())
                 .requestJson();
     }
-
-//    public static Observable<ResponseJson<Object>> changeInfo(UserChangeInfoEntity userChangeInfoEntity) {
-//        return RestRequest.<ResponseJson<Object>>builder()
-//                .addBody(userChangeInfoEntity.toJson())
-//                .url("/users/updateinfo")
-//                .restMethod(RestMethodEnum.POST)
-//                .userId(getInstance().getUserId())
-//                .setToJsonType(new TypeToken<ResponseJson<Object>>() {
-//                }.getType())
-//                .requestJson();
-//    }
-
-
-//    public static Observable<ResponseJson<List<SignEntity>>> getSignDate(String signDay) {
-//        return RestRequest.<ResponseJson<List<SignEntity>>>builder()
-//                .addBody("signDay", signDay)
-//                .url("/users/sign/getMemberSignInRecordSByMothAndMemberId")
-//                .restMethod(RestMethodEnum.POST)
-//                .userId(getInstance().getUserId())
-//                .setToJsonType(new TypeToken<ResponseJson<List<SignEntity>>>() {
-//                }.getType())
-//                .requestJson();
-//    }
-//
-//    public static Observable<ResponseJson<SignMainEntity>> getSign() {
-//        return RestRequest.<ResponseJson<SignMainEntity>>builder()
-//                .addBody("signDay", TimeUtil.format(SysTimeUtil.getSysTime(BaseApplication.getAppContext()), TimeUtil.FORMAT_YYYYMM))
-//                .url("/users/sign/getMemberSignInRecordAndCountAndNumByMothAndMemberId")
-//                .restMethod(RestMethodEnum.POST)
-//                .userId(getInstance().getUserId())
-//                .setToJsonType(new TypeToken<ResponseJson<SignMainEntity>>() {
-//                }.getType())
-//                .requestJson();
-//    }
-
-//    public static Observable<ResponseJson<Object>> sign() {
-//        return RestRequest.<ResponseJson<Object>>builder()
-//                .addBody("signDay", TimeUtil.format(SysTimeUtil.getSysTime(BaseApplication.getAppContext()), TimeUtil.FORMAT_YYYYMMDD))
-//                .url("/users/sign/sign")
-//                .restMethod(RestMethodEnum.POST)
-//                .userId(getInstance().getUserId())
-//                .setToJsonType(new TypeToken<ResponseJson<Object>>() {
-//                }.getType())
-//                .requestJson().map(r -> {
-//                    if (r.isOk() || r.status == 55802) {
-//                        UserEntity entity = UserModel.getInstance().getUserEntity();
-//                        if (entity != null) {
-//                            entity.lastSignTime = TimeUtil.format(SysTimeUtil.getSysTime(BaseApplication.getAppContext()), TimeUtil.FORMAT_YYYYMMDD);
-//                            UserModel.getInstance().setUserEntity(entity);
-//                        }
-//                    }
-//                    return r;
-//                });
-//    }
-//
-//    public static Observable<ResponseJson<List<SignPromotionEntity>>> signPromotion() {
-//        return RestRequest.<ResponseJson<List<SignPromotionEntity>>>builder()
-//                .url("/users/sign/getSignaturePromotion")
-//                .restMethod(RestMethodEnum.POST)
-//                .userId(getInstance().getUserId())
-//                .setToJsonType(new TypeToken<ResponseJson<List<SignPromotionEntity>>>() {
-//                }.getType())
-//                .requestJson();
-//    }
-
-//    public static Observable<ResponseJson<Object>> signReceive(long promotionId) {
-//        return RestRequest.<ResponseJson<Object>>builder()
-//                .url("/users/sign/colPromotion")
-//                .addBody("promotionId", promotionId)
-//                .restMethod(RestMethodEnum.POST)
-//                .userId(getInstance().getUserId())
-//                .setToJsonType(new TypeToken<ResponseJson<Object>>() {
-//                }.getType())
-//                .requestJson();
-//    }
-
-//    public static Observable<ResponseJson<List<IntegralDetailEntity>>> integral(int page, int size) {
-//        return RestRequest.<ResponseJson<List<IntegralDetailEntity>>>builder()
-//                .url("/users/integral/getChangeInfo")
-//                .addBody("page", page)
-//                .addBody("size", size)
-//                .restMethod(RestMethodEnum.POST)
-//                .userId(getInstance().getUserId())
-//                .setToJsonType(new TypeToken<ResponseJson<List<IntegralDetailEntity>>>() {
-//                }.getType())
-//                .requestJson();
-//    }
-
-//    public static Observable<ResponseJson<Integer>> getIntegral() {
-//        return RestRequest.<ResponseJson<Integer>>builder()
-//                .url("/users/getIntegral")
-//                .restMethod(RestMethodEnum.POST)
-//                .userId(getInstance().getUserId())
-//                .setToJsonType(new TypeToken<ResponseJson<Integer>>() {
-//                }.getType())
-//                .requestJson().map(r -> {
-//                    if (r != null && r.data != null) {
-//                        UserEntity userEntity = UserModel.getInstance().getUserEntity();
-//                        if (userEntity != null) {
-//                            userEntity.point = r.data;
-//                            UserModel.getInstance().setUserEntity(userEntity);
-//                        }
-//                        EventBus.getDefault().post(new UserInfoChangeEvent());
-//                    }
-//                    return r;
-//                });
-//    }
-
 
     private static Observable<Boolean> saveLoginOut() {
         return Observable.create(subscriber -> {
@@ -625,63 +488,4 @@ public class UserModel {
             throw new RuntimeException("null");
         });
     }
-
-//    public static Observable<Boolean> saveUserDepot(DepotEntity depotEntity) {
-//        return Observable.create(subscriber -> {
-//            UserDepotDao userDepotDao = DBHelper.getInstance().getUserDepotDao();
-//            List<UserDepotEntity> list = userDepotDao.queryList();
-//            UserDepotEntity userDepotEntity = null;
-//            if (list != null && list.size() > 0) {
-//                userDepotEntity = list.get(0);
-//            }
-//            if (userDepotEntity == null) {
-//                userDepotEntity = new UserDepotEntity();
-//                list = Lists.newArrayList();
-//                list.add(userDepotEntity);
-//            }
-//            userDepotEntity.json = GsonUtil.toJson(depotEntity);
-//            userDepotEntity.ts = System.currentTimeMillis();
-//            userDepotDao.insert(list);
-//            subscriber.onNext(true);
-//            subscriber.onCompleted();
-//        });
-//    }
-
-//    public static Observable<Boolean> saveUserDepot(boolean isShop) {
-//        return Observable.create(subscriber -> {
-//            UserDepotDao userDepotDao = DBHelper.getInstance().getUserDepotDao();
-//            List<UserDepotEntity> list = userDepotDao.queryList();
-//            UserDepotEntity userDepotEntity = null;
-//            if (list != null && list.size() > 0) {
-//                userDepotEntity = list.get(0);
-//            }
-//            if (userDepotEntity == null) {
-//                userDepotEntity = new UserDepotEntity();
-//                list = Lists.newArrayList();
-//                list.add(userDepotEntity);
-//            }
-//            userDepotEntity.ts = System.currentTimeMillis();
-//            userDepotEntity.isShop = isShop;
-//            userDepotDao.insert(list);
-//            subscriber.onNext(true);
-//            subscriber.onCompleted();
-//        });
-//    }
-
-//    public static Observable<UserDepotEntity> getSaveUserDepot() {
-//        return Observable.create(subscriber -> {
-//            UserDepotDao userDepotDao = DBHelper.getInstance().getUserDepotDao();
-//            List<UserDepotEntity> list = userDepotDao.queryList();
-//            if (list != null && list.size() > 0) {
-//                UserDepotEntity userDepotEntity = list.get(0);
-//                if (userDepotEntity != null) {
-//                    subscriber.onNext(userDepotEntity);
-//                    subscriber.onCompleted();
-//                    return;
-//                }
-//            }
-//            throw new RuntimeException("null");
-//        });
-//    }
-
 }

@@ -1,10 +1,12 @@
 package com.zyf.ui.login;
 
 import android.arch.lifecycle.MutableLiveData;
+import android.text.TextUtils;
 
 import com.biz.base.BaseViewModel;
 import com.biz.util.RxUtil;
 import com.biz.util.ValidUtil;
+import com.zyf.model.SmsModel;
 import com.zyf.model.UserModel;
 import com.zyf.driver.ui.R;
 
@@ -41,35 +43,35 @@ public class LoginViewModel extends BaseViewModel {
         this.mobile = mobile;
     }
 
-//    public void sendSms(){
-//        if (!ValidUtil.accountValid(mobile)) {
-//            sendError(R.string.error_invalid_account);
-//            return;
-//        }
-//        submitRequest(SmsModel.sendSms(mobile, SmsModel.SMS_TYPE_QUICK_LOGIN), objectResponseJson -> {
-//            if (objectResponseJson.isOk()) {
-//                smsLiveData.postValue(true);
-//            } else sendError(objectResponseJson);
-//        });
-//    }
-//    public void smsLogin(){
-//        if (!ValidUtil.phoneNumberValid(mobile)) {
-//            sendError(R.string.text_error_mobile_valid);
-//            return;
-//        }
-//        if (TextUtils.isEmpty(smsCode) || smsCode.length() < 3) {
-//            sendError(R.string.text_error_sms_code_valid);
-//            return;
-//        }
-//        submitRequest(UserModel.smsLogin(mobile,smsCode),userEntityResponseJson -> {
-//            if(userEntityResponseJson.isOk()){
-//                RxUtil.newThreadSubscribe(UserModel.saveLoginUser(mobile), s->{}, throwable -> {});
-//                loginStatus.postValue(true);
-//            }else {
-//                sendError(userEntityResponseJson);
-//            }
-//        });
-//    }
+    public void sendSms(){
+        if (!ValidUtil.accountValid(mobile)) {
+            sendError(R.string.error_invalid_account);
+            return;
+        }
+        submitRequest(SmsModel.sendSms(mobile), objectResponseJson -> {
+            if (objectResponseJson.isOk()) {
+                smsLiveData.postValue(true);
+            } else sendError(objectResponseJson);
+        });
+    }
+    public void smsLogin(){
+        if (!ValidUtil.phoneNumberValid(mobile)) {
+            sendError(R.string.text_error_mobile_valid);
+            return;
+        }
+        if (TextUtils.isEmpty(smsCode) || smsCode.length() < 3) {
+            sendError(R.string.text_error_sms_code_valid);
+            return;
+        }
+        submitRequest(UserModel.smsLogin(mobile,smsCode),userEntityResponseJson -> {
+            if(userEntityResponseJson.isOk()){
+                RxUtil.newThreadSubscribe(UserModel.saveLoginUser(mobile), s->{}, throwable -> {});
+                loginStatus.postValue(true);
+            }else {
+                sendError(userEntityResponseJson);
+            }
+        });
+    }
     public void login(String account, String pwd){
         if (!ValidUtil.accountValid(account)) {
             sendError(R.string.error_invalid_account);

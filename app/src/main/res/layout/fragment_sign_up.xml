@@ -83,7 +83,7 @@
                             android:id="@+id/username"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/text_hint_phone"
+                            android:hint="@string/prompt_username"
                             android:inputType="textEmailAddress"
                             android:maxLines="1"
                             android:singleLine="true"
@@ -97,35 +97,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <RelativeLayout
+                        <EditText
+                            android:id="@+id/password"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <EditText
-                                android:id="@+id/password"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                style="@style/Widget.AppCompat.EditText"
-                                android:hint="@string/text_hint_code"
-                                android:imeActionId="6"
-                                android:imeActionLabel="@string/action_sign_in"
-                                android:imeOptions="actionUnspecified"
-                                android:inputType="textPassword"
-                                android:maxLines="1"
-                                android:singleLine="true"
-                                android:paddingTop="20dp"
-                                android:paddingBottom="20dp"/>
-
-                            <include
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                layout="@layout/merge_code_layout"
-                                android:layout_centerVertical="true"
-                                android:layout_alignParentRight="true"
-                                tools:ignore="IncludeLayoutParam"/>
-
-                        </RelativeLayout>
-
+                            android:layout_height="wrap_content"
+                            style="@style/Widget.AppCompat.EditText"
+                            android:hint="@string/prompt_password"
+                            android:imeActionId="6"
+                            android:imeActionLabel="@string/action_sign_in"
+                            android:imeOptions="actionUnspecified"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="20dp"/>
 
                     </android.support.design.widget.TextInputLayout>
 

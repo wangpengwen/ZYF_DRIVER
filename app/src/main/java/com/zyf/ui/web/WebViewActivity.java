@@ -21,7 +21,7 @@ import android.widget.ProgressBar;
 
 import com.biz.base.BaseActivity;
 import com.zyf.app.App;
-import com.zyf.ui.BuildConfig;
+import com.zyf.driver.ui.BuildConfig;
 import com.zyf.driver.ui.R;
 import com.zyf.util.SchemeUtil;
 

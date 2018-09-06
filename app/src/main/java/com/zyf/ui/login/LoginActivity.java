@@ -28,6 +28,7 @@ import rx.subscriptions.CompositeSubscription;
 public class LoginActivity extends BaseLiveDataActivity<LoginViewModel> {
 
     Fragment mPasswordLoginFragment;
+    public static final int REQUEST_REGISTER=1101;
     private boolean isLoginOut=false;
     protected Boolean isFirst = true;
 
@@ -100,13 +101,13 @@ public class LoginActivity extends BaseLiveDataActivity<LoginViewModel> {
         setProgressVisible(false);
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if(requestCode==REQUEST_REGISTER&&resultCode==RESULT_OK){
-//            mViewModel.loadHisUser();
-//        }
-//    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==REQUEST_REGISTER&&resultCode==RESULT_OK){
+            mViewModel.loadHisUser();
+        }
+    }
 
     @Override
     public void onBackPressed() {
