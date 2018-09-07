@@ -130,10 +130,8 @@
 
         <activity android:name="com.zyf.ui.order.OrderQRCodeActivity"/>
 
-        <activity android:name="com.zyf.ui.goods.address.AddressAddActivity"/>
-        <activity android:name="com.zyf.ui.order.printer.Activity_DeviceList"
-            android:theme="@android:style/Theme.Dialog">
-        </activity>
+        <activity android:name="com.zyf.ui.info.ValidateActivity"/>
+
     </application>
 
 </manifest>

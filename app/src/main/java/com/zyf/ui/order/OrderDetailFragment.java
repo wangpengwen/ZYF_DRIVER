@@ -185,10 +185,10 @@ public class OrderDetailFragment extends BaseLiveDataFragment<OrderViewModel> im
         });
 
         RxUtil.click(printBtn).subscribe(o -> {
-            // 打印二维码
-            IntentBuilder.Builder().setClass(getActivity(), OrderQRCodeActivity.class)
-                    .putExtra(IntentBuilder.KEY_ORDER_ID,orderId)
-                    .startActivity();
+//            // 打印二维码
+//            IntentBuilder.Builder().setClass(getActivity(), OrderQRCodeActivity.class)
+//                    .putExtra(IntentBuilder.KEY_ORDER_ID,orderId)
+//                    .startActivity();
         });
 
         mViewModel.getCreateOrderLiveData().observe(this, obj -> {

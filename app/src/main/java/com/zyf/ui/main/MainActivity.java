@@ -21,6 +21,7 @@ import com.zyf.driver.ui.R;
 import com.zyf.model.UserModel;
 import com.zyf.ui.hangye.HangyeFragment;
 import com.zyf.ui.home.HomeFragment;
+import com.zyf.ui.info.ValidateActivity;
 import com.zyf.ui.user.UserFragment;
 
 import java.util.List;
@@ -87,12 +88,11 @@ public class MainActivity extends BaseLiveDataActivity implements ActivityStackM
 
         if(!UserModel.getInstance().isValidate()){
             //未验证完，进入验证activity
-//            IntentBuilder.Builder(this, LoginActivity.class)
-//                    .setData(Uri.parse(url))
-//                    .addFlag(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-//                    .overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
-//                    .finish(this)
-//                    .startActivity();
+            IntentBuilder.Builder(this, ValidateActivity.class)
+                    .addFlag(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                    .overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
+                    .finish(this)
+                    .startActivity();
         }
     }
 
