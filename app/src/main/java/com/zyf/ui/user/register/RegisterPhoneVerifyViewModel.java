@@ -59,7 +59,7 @@ public class RegisterPhoneVerifyViewModel extends BaseViewModel {
             sendError(R.string.text_error_mobile_valid);
             return;
         }
-        if (TextUtils.isEmpty(smsCode) || smsCode.length() < 3) {
+        if (TextUtils.isEmpty(smsCode) || smsCode.length() < 4) {
             sendError(R.string.text_error_sms_code_valid);
             return;
         }

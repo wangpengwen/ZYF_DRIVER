@@ -1,15 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white">
 
-    <android.support.constraint.ConstraintLayout
+    <RelativeLayout
+        android:id="@+id/layout_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:background="@drawable/shape_corner_blue_background">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:srcCompat="@drawable/vector_emoticon"/>
+
+        <TextView
+            android:id="@+id/tv_welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/icon"
+            android:layout_alignBottom="@+id/icon"
+            android:layout_toRightOf="@id/icon"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            tools:text="你好，张三"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_welcome"
+            android:layout_below="@id/tv_welcome"
+            android:textSize="10sp"
+            android:textColor="@color/white"
+            android:text="完善信息成为车主"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/layout_welcome"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="12sp"
+        android:textColor="@color/color_333333"
+        android:text="选择车辆品牌和型号"/>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/title"/>
 
+    <EditText
+        android:id="@+id/et_vehicle_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/list"
+        android:layout_margin="20dp"
+        android:hint="@string/text_input_vehicle_num"
+        android:textColorHint="@color/color_666666"
+        android:textSize="22sp"
+        android:textColor="@color/color_333333" />
 
-    </android.support.constraint.ConstraintLayout>
+    <Button android:id="@+id/btn_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="50dp"
+        android:text="确定"/>
 
 </android.support.constraint.ConstraintLayout>

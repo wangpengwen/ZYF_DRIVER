@@ -18,6 +18,7 @@ import com.biz.util.Lists;
 import com.biz.util.RxUtil;
 import com.biz.widget.BottomNavigationViewEx;
 import com.zyf.driver.ui.R;
+import com.zyf.model.UserModel;
 import com.zyf.ui.hangye.HangyeFragment;
 import com.zyf.ui.home.HomeFragment;
 import com.zyf.ui.user.UserFragment;
@@ -83,6 +84,16 @@ public class MainActivity extends BaseLiveDataActivity implements ActivityStackM
         RxUtil.click(advBtn).subscribe(o -> {
             IntentBuilder.Builder().startParentActivity(this.getActivity(), HangyeFragment.class,true);
         });
+
+        if(!UserModel.getInstance().isValidate()){
+            //未验证完，进入验证activity
+//            IntentBuilder.Builder(this, LoginActivity.class)
+//                    .setData(Uri.parse(url))
+//                    .addFlag(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+//                    .overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
+//                    .finish(this)
+//                    .startActivity();
+        }
     }
 
     public void onBackPressed() {

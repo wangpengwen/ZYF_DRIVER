@@ -130,27 +130,19 @@ public class UserModel {
 //        return getUserDepot(true);
 //    }
     public String getUserToken() {
-        return mUserEntity == null ? "" : mUserEntity.getSalesmanToken();
+        return mUserEntity == null ? "" : mUserEntity.driverToken;
     }
 
     public String getUserId() {
-        return mUserEntity == null ? "" : mUserEntity.getSalesmanNum();
+        return mUserEntity == null ? "" : mUserEntity.driverNum;
     }
 
     public String getUserName(){
-        return mUserEntity == null ? "" : mUserEntity.getSalesmanName();
+        return mUserEntity == null ? "" : mUserEntity.driverName;
     }
 
-    public String getUserRealName() {
-        return mUserEntity == null ? "" : mUserEntity.getSalesmanRealName();
-    }
-
-    public String getStoreName(){
-        return mUserEntity == null ? "" : mUserEntity.getStorageName();
-    }
-
-    public String getStoreNum(){
-        return mUserEntity == null ? "" : mUserEntity.getSalesmanStorage();
+    public boolean isValidate(){
+        return mUserEntity != null && (mUserEntity.driverToExamine == 1);
     }
 
     public UserModel() {
@@ -231,7 +223,7 @@ public class UserModel {
 
 
     public boolean isLogin() {
-        return this.mUserEntity != null && !TextUtils.isEmpty(mUserEntity.getSalesmanToken());
+        return this.mUserEntity != null && !TextUtils.isEmpty(mUserEntity.driverToken);
     }
 
 //    public boolean createLoginDialog(Context context) {
@@ -414,7 +406,7 @@ public class UserModel {
             if (list != null && list.size() > 0) {
                 for (int i = list.size() - 1; i >= 0; i--) {
                     UserEntity entity = list.get(i);
-                    if (userInfo != null && userInfo.getSalesmanNum() == entity.getSalesmanNum()) {
+                    if (userInfo != null && userInfo.driverNum == entity.driverNum) {
                         list.remove(i);
                     } else {
 //                        entity.ts = -1L;

@@ -24,7 +24,6 @@ import com.zyf.driver.ui.R;
 import com.zyf.ui.user.achievement.AchievementFragment;
 import com.zyf.ui.user.order.UserOrderFragment;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
-import com.zyf.ui.user.store.StoreFragment;
 
 import java.util.List;
 
@@ -94,12 +93,10 @@ public class UserFragment extends BaseLazyFragment<UserViewModel> {
                 IntentBuilder.Builder().startParentActivity(this.getActivity(), AchievementFragment.class,true);
             }else if(getString(R.string.text_order_management).equalsIgnoreCase(mAdapter.getItem(position))){
                 IntentBuilder.Builder().startParentActivity(this.getActivity(), UserOrderFragment.class,true);
-            }else if(getString(R.string.text_store).equalsIgnoreCase(mAdapter.getItem(position))){
-                IntentBuilder.Builder().startParentActivity(this.getActivity(), StoreFragment.class,true);
             }
         });
 
-        mUserHeaderViewHolder.mUserName.setText(UserModel.getInstance().getUserRealName());
+        mUserHeaderViewHolder.mUserName.setText(UserModel.getInstance().getUserName());
     }
 
     @Override
@@ -119,7 +116,7 @@ public class UserFragment extends BaseLazyFragment<UserViewModel> {
 
     class UserAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 
-        protected List<Integer> icons = Lists.newArrayList(R.mipmap.ic_user_info, R.mipmap.ic_user_achievement,R.mipmap.ic_user_order, R.mipmap.ic_user_store);
+        protected List<Integer> icons = Lists.newArrayList(R.mipmap.ic_user_info, R.mipmap.ic_user_achievement,R.mipmap.ic_user_order);
 
         public UserAdapter() {
             super(R.layout.item_my_layout);

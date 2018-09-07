@@ -79,7 +79,7 @@ public class RegisterPhoneVerifyFragment extends BaseLiveDataFragment<RegisterPh
             setProgressVisible(false);
             getActivity().setResult(Activity.RESULT_OK);
             ToastUtils.showLong(getContext(), "注册成功！");
-
+            finish();
 //            loginViewModel.login(mViewModel.mobile,mViewModel.mobile.substring(mViewModel.mobile.length()-6));
         });
 

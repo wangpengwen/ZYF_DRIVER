@@ -128,44 +128,4 @@
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="35dp"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/dp_10"
-        android:textColor="#5E9DFF"
-        android:textSize="18sp"
-        android:text="公司信息"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="45dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:weightSum="5"
-        android:background="@color/white">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:paddingLeft="@dimen/dp_10"
-            android:textSize="16sp"
-            android:textColor="@color/color_333333"
-            android:text="所属公司"/>
-
-        <TextView
-            android:id="@+id/tv_company"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:paddingLeft="@dimen/dp_10"
-            android:textSize="16sp"
-            android:textColor="@color/color_999999"
-            tools:text=""/>
-
-    </LinearLayout>
-
 </LinearLayout>

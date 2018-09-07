@@ -30,8 +30,6 @@ public class UserInfoFragment extends BaseLiveDataFragment<UserViewModel> {
     TextView tvCity;
     @BindView(R.id.tv_inviter_mobile)
     TextView tvInviterMobile;
-    @BindView(R.id.tv_company)
-    TextView tvCompany;
 
     @Override
     public void onAttach(Context context) {
@@ -60,11 +58,10 @@ public class UserInfoFragment extends BaseLiveDataFragment<UserViewModel> {
         mViewModel.userInfo();
         mViewModel.getInfoLiveData().observe(this, userEntity -> {
 
-            tvName.setText(userEntity.salesmanRealName);
+            tvName.setText(userEntity.driverName);
             tvIdCard.setText("");
             tvCity.setText("");
             tvInviterMobile.setText("");
-            tvCompany.setText(userEntity.salesmanComnum);
         });
     }
 

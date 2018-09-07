@@ -109,8 +109,8 @@
                                 android:hint="@string/text_hint_code"
                                 android:imeActionId="6"
                                 android:imeActionLabel="@string/action_sign_in"
-                                android:imeOptions="actionUnspecified"
-                                android:inputType="textPassword"
+                                android:imeOptions="actionDone"
+                                android:inputType="number"
                                 android:maxLines="1"
                                 android:singleLine="true"
                                 android:paddingTop="20dp"
@@ -158,7 +158,8 @@
                     android:textStyle="bold"
                     android:textColor="@color/white"
                     android:text="@string/action_sign_up"
-                    android:background="@mipmap/btn_bg"/>
+                    android:background="@mipmap/btn_bg"
+                    android:visibility="gone"/>
 
                 <Button
                     android:id="@+id/sign_in_button"

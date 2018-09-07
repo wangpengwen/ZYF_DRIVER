@@ -114,19 +114,6 @@ public class OrderModel {
                 .requestJson();
     }
 
-    public static Observable<ResponseJson<Object>> intoStorage(String orderNum){
-
-        return RestRequest.<ResponseJson<Object>>builder()
-                .url("/business/intostorage.do")
-                .addBody("orderNum", orderNum)
-                .addBody("storageNum", UserModel.getInstance().getStoreNum())
-                .restMethod(RestMethodEnum.POST)
-                .token(UserModel.getInstance().getUserToken())
-                .setToJsonType(new TypeToken<ResponseJson<Object>>() {
-                }.getType())
-                .requestJson();
-    }
-
     public static Observable<ResponseJson<List<OrderEntity>>> orderListByGoodsNum(String goodsNum){
 
         return RestRequest.<ResponseJson<List<OrderEntity>>>builder()

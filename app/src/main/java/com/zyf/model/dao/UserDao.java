@@ -35,7 +35,7 @@ public interface UserDao {
     @Query("select * from user")
     List<UserEntity> queryList();
 
-    @Query("select * from user where memberId=:userId")
+    @Query("select * from user where driverNum=:userId")
     UserEntity[] query(long userId);
 
     @Delete

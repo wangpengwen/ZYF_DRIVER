@@ -27,145 +27,24 @@ import android.arch.persistence.room.PrimaryKey;
  * animal表会同时拥有Country类的字段
  * (cid 和 cname).
  */
-@Entity(tableName = "User", indices = {@Index("memberId")})
+@Entity(tableName = "User", indices = {@Index("driverId")})
 public class UserEntity {
-    @PrimaryKey(autoGenerate = true)
-    public long memberId;
-//    @ColumnInfo(name = "ts")
-//    public long ts;
-    @ColumnInfo(name = "salesmanName")
-    public String salesmanName;
-    @ColumnInfo(name = "salesmanNum")
-    public String salesmanNum;
-    @ColumnInfo(name = "salesmanPic")
-    public String salesmanPic;
-    @ColumnInfo(name = "salesmanComnum")
-    public String salesmanComnum;
-    @ColumnInfo(name = "salesmanGoal")
-    public String salesmanGoal;
-    @ColumnInfo(name = "salesmanBonus")
-    public String salesmanBonus;
-    @ColumnInfo(name = "salesmanType")
-    public String salesmanType;
-    @ColumnInfo(name = "salesmanJoinTime")
-    public String salesmanJoinTime;
-    @ColumnInfo(name = "salesmanRealName")
-    public String salesmanRealName;
-    @ColumnInfo(name = "salesmanToken")
-    public String salesmanToken;
-    @ColumnInfo(name = "storageName")
-    public String storageName;
-    @ColumnInfo(name = "salesmanStorage")
-    public String salesmanStorage;
-
-//    @ColumnInfo(name = "token")
-//    public String token;
-//    @ColumnInfo(name = "areaName")
-//    public String areaName;
-//    @ColumnInfo(name = "areaNo")
-//    public String areaNo;
-//    @ColumnInfo(name = "deviceNo")
-//    public String deviceNo;
-//    @ColumnInfo(name = "idcard")
-//    public String idcard;
-//    @ColumnInfo(name = "validTimeStart")
-//    public Long validTimeStart;
-//    @ColumnInfo(name = "loginTime")
-//    public String loginTime;
-//    @ColumnInfo(name = "storeNo")
-//    public String storeNo;
-//    @ColumnInfo(name = "storeName")
-//    public String storeName;
-
-//    @ColumnInfo(name = "accountStateType")
-//    public String accountStateType;
-//    @ColumnInfo(name = "autoToken")
-//    public String autoToken;
-//    @ColumnInfo(name = "loginCount")
-//    public int loginCount;
-//    @ColumnInfo(name = "regTime")
-//    public String regTime;
-//    @ColumnInfo(name = "birthday")
-//    public String birthday;
-//    @ColumnInfo(name = "couponQuantity")
-//    public int couponQuantity;
-//    @ColumnInfo(name = "email")
-//    public String email;
-//    @ColumnInfo(name = "memberLevel")
-//    public int memberLevel;
-//    @ColumnInfo(name = "mobile")
-//    public String mobile;
-//    @ColumnInfo(name = "nickName")
-//    public String nickName;
-//    @ColumnInfo(name = "portraitUrl")
-//    public String portraitUrl;
-//    @ColumnInfo(name = "sexType")
-//    public String sexType;
-//    @ColumnInfo(name = "walletBalance")
-//    public long walletBalance;
-//    @ColumnInfo(name = "point")
-//    public int point;
-//    @ColumnInfo(name = "userToken")
-//    public String userToken;
-//    @ColumnInfo(name = "walletAccount")
-//    public String walletAccount;
-//    @ColumnInfo(name = "hasTurnedOnWallet")
-//    public boolean hasTurnedOnWallet ;
-//    @ColumnInfo(name = "lastSignTime")
-//    public String lastSignTime;
-
-
-    public long getMemberId() {
-        return memberId;
-    }
-
-    public String getSalesmanName() {
-        return salesmanName;
-    }
-
-    public String getSalesmanNum() {
-        return salesmanNum;
-    }
-
-    public String getSalesmanPic() {
-        return salesmanPic;
-    }
-
-    public String getSalesmanComnum() {
-        return salesmanComnum;
-    }
-
-    public String getSalesmanGoal() {
-        return salesmanGoal;
-    }
-
-    public String getSalesmanBonus() {
-        return salesmanBonus;
-    }
-
-    public String getSalesmanType() {
-        return salesmanType;
-    }
-
-    public String getSalesmanJoinTime() {
-        return salesmanJoinTime;
-    }
-
-    public String getSalesmanRealName() {
-        return salesmanRealName;
-    }
-
-    public String getSalesmanToken() {
-        return salesmanToken;
-    }
-
-    public String getStorageName() {
-        return storageName;
-    }
-
-    public String getSalesmanStorage() {
-        return salesmanStorage;
-    }
+    @PrimaryKey(autoGenerate = false)
+    public long driverId;
+    @ColumnInfo(name = "driverNum")
+    public String driverNum;
+    @ColumnInfo(name = "driverName")
+    public String driverName;
+    @ColumnInfo(name = "driverPhone")
+    public String driverPhone;
+    @ColumnInfo(name = "driverToken")
+    public String driverToken;
+    @ColumnInfo(name = "driverIsShort")
+    public int driverIsShort;
+    @ColumnInfo(name = "driverToExamine")
+    public int driverToExamine;
+    @ColumnInfo(name = "driverFlag")
+    public int driverFlag;
 
     //    public String getHideMobile() {
 //        if(!TextUtils.isEmpty(nickName)) return nickName;

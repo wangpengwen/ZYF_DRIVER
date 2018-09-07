@@ -19,13 +19,13 @@ public class ScanViewModel extends BaseViewModel {
     protected MutableLiveData<Boolean> intoStorageLiveData = new MutableLiveData<>();
 
     public void intoStorage(String code){
-        submitRequest(OrderModel.intoStorage(code), stringResponseJson -> {
-            if(stringResponseJson.isOk()){
-                intoStorageLiveData.postValue(true);
-            }else {
-                sendError(stringResponseJson);
-            }
-        });
+//        submitRequest(OrderModel.intoStorage(code), stringResponseJson -> {
+//            if(stringResponseJson.isOk()){
+//                intoStorageLiveData.postValue(true);
+//            }else {
+//                sendError(stringResponseJson);
+//            }
+//        });
     }
 
     public MutableLiveData<Boolean> getIntoStorageLiveData() {

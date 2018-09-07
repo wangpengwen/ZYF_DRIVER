@@ -16,6 +16,11 @@ final public class ResponseJson<T> {
     @Expose
     public int status = -1;
     /**
+     * 调用返回错误值
+     */
+    @Expose
+    public String errorcode;
+    /**
      * 服务器当前时间戳
      */
     @Expose
@@ -29,7 +34,7 @@ final public class ResponseJson<T> {
     public long execTime;
 
     public boolean isOk() {
-        return status == 0;
+        return status == 0 && "00000".equals(errorcode);
     }
 
     public String toJsonString() {

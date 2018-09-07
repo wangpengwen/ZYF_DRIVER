@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,16 +18,11 @@ import com.biz.util.Lists;
 import com.biz.util.ToastUtils;
 import com.biz.util.Utils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.zyf.model.UserModel;
 import com.zyf.driver.ui.R;
 import com.zyf.ui.authentication.AuthenticationActivity;
-import com.zyf.ui.goods.GoodsAcquiringFragment;
-import com.zyf.ui.goods.GoodsListFragment;
-import com.zyf.ui.scan.ScanActivity;
 import com.zyf.ui.user.UserInfoFragment;
 import com.zyf.ui.user.order.UserOrderFragment;
 import com.zyf.ui.user.settings.SettingsActivity;
-import com.zyf.ui.user.store.StoreFragment;
 import com.zyf.widget.GridSpacingItemDecoration;
 
 import butterknife.BindView;
@@ -87,17 +81,10 @@ public class HomeFragment extends BaseLazyFragment<HomeViewModel> {
             switch (position){
 
                 case 0:
-                    IntentBuilder.Builder().startParentActivity(getBaseActivity(), GoodsAcquiringFragment.class,true);
+
                     break;
                 case 1:
-                    if(TextUtils.isEmpty(UserModel.getInstance().getStoreNum())){
 
-                        ToastUtils.showLong(getActivity(),"请先绑定仓库");
-                        IntentBuilder.Builder().startParentActivity(this.getActivity(), StoreFragment.class,true);
-                    }else {
-
-                        IntentBuilder.Builder().setClass(getActivity(), ScanActivity.class).startActivity();
-                    }
                     break;
                 case 2:
                     IntentBuilder.Builder().startParentActivity(this.getActivity(), UserOrderFragment.class,true);
@@ -106,7 +93,7 @@ public class HomeFragment extends BaseLazyFragment<HomeViewModel> {
                     ToastUtils.showLong(getBaseActivity(),"敬请期待...");
                     break;
                 case 4:
-                    IntentBuilder.Builder().startParentActivity(getBaseActivity(), GoodsListFragment.class,true);
+
                     break;
                 case 5:
                     IntentBuilder.Builder().setClass(getActivity(), AuthenticationActivity.class).startActivity();

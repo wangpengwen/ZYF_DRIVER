@@ -66,7 +66,6 @@
     <string name="text_user_info">个人信息</string>
     <string name="text_my_achievement">我的业绩</string>
     <string name="text_order_management">订单管理</string>
-    <string name="text_store">仓库信息</string>
 
     <string name="text_change_account">切换帐号</string>
 
@@ -122,6 +121,9 @@
     <string name="activity_main_scan_error">扫描失败！</string>
     <string name="activity_main_connected">连接成功！</string>
 
+    <string name="text_input_vehicle_num">请输入车牌号</string>
+    <string name="text_welcome">你好，%1$s</string>
+
     <array name="array_photo">
         <item>@string/text_photo</item>
         <item>@string/text_choose_photo</item>
@@ -132,7 +134,6 @@
         <item>@string/text_user_info</item>
         <item>@string/text_my_achievement</item>
         <item>@string/text_order_management</item>
-        <item>@string/text_store</item>
     </string-array>
 
     <string-array name="array_userinfo">
