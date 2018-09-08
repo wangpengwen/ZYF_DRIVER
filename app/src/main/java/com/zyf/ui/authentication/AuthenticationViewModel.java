@@ -13,9 +13,9 @@ public class AuthenticationViewModel extends BaseViewModel {
 
     protected MutableLiveData<Boolean> bindLiveData = new MutableLiveData<>();
 
-    public void bindIDCard(String orderID,String name,String address,String idNum,int gender,String birthday){
+    public void bindIDCard(String name,String idNum){
 
-        submitRequest(AuthenticationModel.bindIDCard(orderID, name, address, idNum, gender, birthday), objectResponseJson -> {
+        submitRequest(AuthenticationModel.bindIDCard(name, idNum), objectResponseJson -> {
             if(objectResponseJson.isOk()){
                 bindLiveData.postValue(true);
             }else {

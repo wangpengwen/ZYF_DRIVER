@@ -128,9 +128,9 @@
 
         <activity android:name="com.zyf.ui.authentication.AuthenticationActivity"/>
 
-        <activity android:name="com.zyf.ui.order.OrderQRCodeActivity"/>
-
-        <activity android:name="com.zyf.ui.info.ValidateActivity"/>
+        <activity
+            android:name="com.zyf.ui.info.ValidateActivity"
+            android:windowSoftInputMode="adjustPan"/>
 
     </application>
 

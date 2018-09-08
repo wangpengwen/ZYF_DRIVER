@@ -13,16 +13,25 @@ import rx.Observable;
 
 public class AuthenticationModel {
 
-    public static Observable<ResponseJson<Object>> bindIDCard(String orderID,String name,String address,String idNum,int gender,String birthday){
+    public static Observable<ResponseJson<Object>> bindIDCard(String name,String idNum){
 
         return RestRequest.<ResponseJson<Object>>builder()
-                .url("/business/newthorder.do")
-                .addBody("thirdpartyOrderNum", orderID)
-                .addBody("thirdpartySenderName", name)
-                .addBody("thirdpartySenderAddr", address)
-                .addBody("thirdpartySenderIdcard", idNum)
-                .addBody("thirdpartySenderSexual", gender+"")
-                .addBody("thirdpartySenderBirthday", birthday)
+                .url("/api/driver/cmpl/idcard.do")
+                .addBody("driverRealName", name)
+                .addBody("driverIdcard", idNum)
+                .restMethod(RestMethodEnum.POST)
+                .token(UserModel.getInstance().getUserToken())
+                .setToJsonType(new TypeToken<ResponseJson<Object>>() {
+                }.getType())
+                .requestJson();
+    }
+
+    public static Observable<ResponseJson<Object>> bindVehicleInfo(String vehicleType,String num){
+
+        return RestRequest.<ResponseJson<Object>>builder()
+                .url("/api/cmpl/truck.do")
+                .addBody("carNum", num)
+                .addBody("truckType", vehicleType)
                 .restMethod(RestMethodEnum.POST)
                 .token(UserModel.getInstance().getUserToken())
                 .setToJsonType(new TypeToken<ResponseJson<Object>>() {

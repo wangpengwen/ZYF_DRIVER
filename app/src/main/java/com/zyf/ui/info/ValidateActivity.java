@@ -23,8 +23,7 @@ public class ValidateActivity extends BaseLiveDataActivity<ValidateViewModel> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_with_toolbar_layout);
 //        findViewById(R.id.line).setVisibility(View.GONE);
-        getLayoutInflater().inflate(R.layout.fragment_authentication, findViewById(R.id.frame_holder));
-        initViewModel(ValidateViewModel.class);
+        initViewModel(ValidateViewModel.class,false,true);
 //        mToolbar.setTitle("实名认证");
 
         getSupportFragmentManager().beginTransaction()

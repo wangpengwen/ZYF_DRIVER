@@ -12,15 +12,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.biz.base.BaseLiveDataActivity;
+import com.biz.util.IntentBuilder;
 import com.biz.util.LogUtil;
 import com.biz.util.RxUtil;
 import com.biz.util.ToastUtils;
-import com.biz.widget.CountEditText;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.neolixlibrary.NeolixIdRead;
 import com.zyf.driver.ui.R;
+import com.zyf.ui.info.ValidateActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
@@ -62,8 +63,6 @@ public class AuthenticationActivity extends BaseLiveDataActivity<AuthenticationV
     TextView tvDnCode;
     @BindView(R.id.linearLayout)
     LinearLayout linearLayout;
-    @BindView(R.id.edit_search)
-    CountEditText editSearch;
     @BindView(R.id.button)
     Button button;
 
@@ -117,7 +116,6 @@ public class AuthenticationActivity extends BaseLiveDataActivity<AuthenticationV
         initViewModel(AuthenticationViewModel.class);
         mToolbar.setTitle("实名认证");
 
-        editSearch.setHint("请输入要和身份证绑定的运单号");
         button.setVisibility(View.GONE);
 
         idRead = new NeolixIdRead(this, myListing);
@@ -128,31 +126,26 @@ public class AuthenticationActivity extends BaseLiveDataActivity<AuthenticationV
 
         RxUtil.click(confirmBtn).subscribe(o -> {
 
-            if(TextUtils.isEmpty(editSearch.getText().toString())){
-                ToastUtils.showLong(this,"请输入运单号");
-                return;
-            }
-
             if(TextUtils.isEmpty(tvName.getText().toString())){
                 ToastUtils.showLong(this,"请验证身份证");
                 return;
             }
 
-            String orderID = editSearch.getText().toString();
             String name = tvName.getText().toString();
-            String address = tvAddress.getText().toString();
+//            String address = tvAddress.getText().toString();
             String idCard = tvIdCard.getText().toString();
-            int gender = "男".equals(tvGender.getText().toString()) ? 1 : "女".equals(tvGender.getText().toString()) ? 2 : 0;
-            String birthday = tvBirthday.getText().toString();
+//            int gender = "男".equals(tvGender.getText().toString()) ? 1 : "女".equals(tvGender.getText().toString()) ? 2 : 0;
+//            String birthday = tvBirthday.getText().toString();
 
-            mViewModel.bindIDCard(orderID,name,address,idCard,gender,birthday);
+            mViewModel.bindIDCard(name,idCard);
         });
 
         mViewModel.getBindLiveData().observe(this, aBoolean -> {
 
             if(aBoolean){
-                ToastUtils.showLong(this,"绑定成功");
-                finish();
+                ToastUtils.showLong(this,"提交成功");
+//                finish();
+
             }
         });
     }
@@ -168,5 +161,15 @@ public class AuthenticationActivity extends BaseLiveDataActivity<AuthenticationV
 //        mSubscription.clear();
         unbinder.unbind();
         idRead.disconnectDevice();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        IntentBuilder.Builder(this, ValidateActivity.class)
+                .addFlag(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                .overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
+                .finish(this)
+                .startActivity();
     }
 }

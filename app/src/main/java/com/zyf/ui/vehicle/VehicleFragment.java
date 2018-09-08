@@ -1,10 +1,12 @@
 package com.zyf.ui.vehicle;
 
+import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +16,17 @@ import android.widget.TextView;
 
 import com.biz.base.BaseLiveDataFragment;
 import com.biz.base.BaseViewHolder;
+import com.biz.util.IntentBuilder;
 import com.biz.util.Lists;
 import com.biz.util.RxUtil;
+import com.biz.util.ToastUtils;
+import com.biz.util.Utils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zyf.driver.ui.R;
 import com.zyf.model.UserModel;
 import com.zyf.model.entity.vehicle.VehicleEntity;
+import com.zyf.ui.authentication.AuthenticationActivity;
+import com.zyf.ui.info.ValidateViewModel;
 import com.zyf.ui.user.order.UserOrderViewModel;
 
 import java.util.List;
@@ -33,7 +40,7 @@ import rx.functions.Action1;
  * Created by TCJK on 2018/5/29.
  */
 
-public class VehicleFragment extends BaseLiveDataFragment<UserOrderViewModel> {
+public class VehicleFragment extends BaseLiveDataFragment<ValidateViewModel> {
 
     @BindView(R.id.tv_welcome)
     TextView tvWelcome;
@@ -47,10 +54,12 @@ public class VehicleFragment extends BaseLiveDataFragment<UserOrderViewModel> {
 
     List<VehicleEntity> data;
 
+    String vehicleTypeStr = "";
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        initViewModel(UserOrderViewModel.class, UserOrderViewModel.class.getName(), true);
+        initViewModel(ValidateViewModel.class, ValidateViewModel.class.getName(), false);
     }
 
     @Override
@@ -85,13 +94,29 @@ public class VehicleFragment extends BaseLiveDataFragment<UserOrderViewModel> {
                 entity.isChecked = false;
             }
             data.get(position).isChecked = true;
+            vehicleTypeStr = data.get(position).type;
             adapter.notifyDataSetChanged();
         });
 
         tvWelcome.setText(getString(R.string.text_welcome, UserModel.getInstance().getUserName()));
 
+        mViewModel.getVehicleLiveData().observe(this, o -> {
+            IntentBuilder.Builder().setClass(getActivity(), AuthenticationActivity.class).startActivity();
+        });
+
         RxUtil.click(btnConfirm).subscribe(o -> {
 
+            if(TextUtils.isEmpty(vehicleTypeStr)){
+                ToastUtils.showLong(getActivity(),"请选择车型");
+                return;
+            }
+
+            if(!Utils.checkVehicleNum(etVehicleNum.getText().toString())){
+                ToastUtils.showLong(getActivity(),"请输入正确的车牌号");
+                return;
+            }
+
+            mViewModel.uploadVehicle(vehicleTypeStr,etVehicleNum.getText().toString());
         });
     }
 
