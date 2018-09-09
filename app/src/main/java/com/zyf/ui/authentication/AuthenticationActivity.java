@@ -21,6 +21,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.neolixlibrary.NeolixIdRead;
 import com.zyf.driver.ui.R;
+import com.zyf.ui.info.LicenseActivity;
 import com.zyf.ui.info.ValidateActivity;
 
 import java.io.ByteArrayOutputStream;
@@ -144,8 +145,12 @@ public class AuthenticationActivity extends BaseLiveDataActivity<AuthenticationV
 
             if(aBoolean){
                 ToastUtils.showLong(this,"提交成功");
-//                finish();
-
+                finish();
+                IntentBuilder.Builder(this, LicenseActivity.class)
+                        .addFlag(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                        .overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
+                        .finish(this)
+                        .startActivity();
             }
         });
     }

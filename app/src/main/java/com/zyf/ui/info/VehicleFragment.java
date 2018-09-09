@@ -1,4 +1,4 @@
-package com.zyf.ui.vehicle;
+package com.zyf.ui.info;
 
 import android.arch.lifecycle.Observer;
 import android.content.Context;

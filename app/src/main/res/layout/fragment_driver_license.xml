@@ -2,67 +2,203 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/vehicle_info_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="15dp"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="@color/color_333333"
-        android:text="车辆信息"/>
-
-    <TextView
-        android:id="@+id/vehicle_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/vehicle_info_title"
-        app:layout_constraintLeft_toLeftOf="@+id/vehicle_info_title"
-        android:layout_marginTop="@dimen/dp_10"
-        android:textSize="24sp"
-        android:textColor="@color/color_999999"
-        android:text="晋A10098  小型车"/>
-
-    <View
-        android:id="@+id/space"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_10"
-        app:layout_constraintTop_toBottomOf="@+id/vehicle_info"
-        android:layout_marginTop="15dp"
-        android:background="@color/color_background"/>
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_commit">
 
-    <TextView
-        android:id="@+id/license_info_title"
-        android:layout_width="wrap_content"
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/vehicle_info_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="15dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/color_333333"
+                android:text="车辆信息"/>
+
+            <TextView
+                android:id="@+id/vehicle_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/vehicle_info_title"
+                app:layout_constraintLeft_toLeftOf="@+id/vehicle_info_title"
+                android:layout_marginTop="@dimen/dp_10"
+                android:textSize="24sp"
+                android:textColor="@color/color_999999"
+                android:text="晋A10098  小型车"/>
+
+            <View
+                android:id="@+id/space"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_10"
+                app:layout_constraintTop_toBottomOf="@+id/vehicle_info"
+                android:layout_marginTop="15dp"
+                android:background="@color/color_background"/>
+
+            <TextView
+                android:id="@+id/license_info_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/space"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="15dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/color_333333"
+                android:text="车辆信息"/>
+
+            <RelativeLayout
+                android:id="@+id/id_card_front"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="7.5dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/shape_corner_gray_background"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/id_card_oppsite"
+                app:layout_constraintTop_toBottomOf="@+id/license_info_title">
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/icon1"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_centerHorizontal="true"
+                    app:srcCompat="@drawable/vector_add_gray"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/icon1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/color_666666"
+                    android:text="上传身份证（正面）"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/id_card_oppsite"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="7.5dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/shape_corner_gray_background"
+                app:layout_constraintLeft_toRightOf="@+id/id_card_front"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/license_info_title">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/icon2"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_centerHorizontal="true"
+                    app:srcCompat="@drawable/vector_add_gray"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/icon2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/color_666666"
+                    android:text="上传身份证（反面）"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/driver_license"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="7.5dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/shape_corner_gray_background"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/vehicle_license"
+                app:layout_constraintTop_toBottomOf="@+id/id_card_front">
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/icon3"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_centerHorizontal="true"
+                    app:srcCompat="@drawable/vector_add_gray"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/icon3"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/color_666666"
+                    android:text="上传本人驾照"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/vehicle_license"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="7.5dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/shape_corner_gray_background"
+                app:layout_constraintLeft_toRightOf="@+id/driver_license"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/id_card_oppsite">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/icon4"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_centerHorizontal="true"
+                    app:srcCompat="@drawable/vector_add_gray"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/icon4"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/color_666666"
+                    android:text="上传本人/他人行驶证"/>
+
+            </RelativeLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_commit"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/space"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="15dp"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="@color/color_333333"
-        android:text="车辆信息"/>
-
-    <RelativeLayout
-        android:layout_width="230dp"
-        android:layout_height="200dp"
-        android:gravity="center"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/license_info_title">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="@color/color_666666"
-            android:text="上传身份证"/>
-
-    </RelativeLayout>
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="提交车主信息"/>
 </android.support.constraint.ConstraintLayout>
+
+

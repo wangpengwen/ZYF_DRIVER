@@ -7,12 +7,12 @@ import com.biz.base.BaseLiveDataActivity;
 import com.zyf.driver.ui.R;
 
 /**
- * Created by ltxxx on 2018/9/7.
+ * Created by ltxxx on 2018/9/9.
  */
 
-public class ValidateActivity extends BaseLiveDataActivity<ValidateViewModel> {
+public class LicenseActivity extends BaseLiveDataActivity<ValidateViewModel> {
 
-    VehicleFragment vehicleFragment;
+    LicenseFragment licenseFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,8 +23,8 @@ public class ValidateActivity extends BaseLiveDataActivity<ValidateViewModel> {
 //        mToolbar.setTitle("实名认证");
 
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.frame_holder, vehicleFragment =new VehicleFragment(),
-                        VehicleFragment.class.getName())
+                .add(R.id.frame_holder, licenseFragment =new LicenseFragment(),
+                        LicenseFragment.class.getName())
 //                .add(R.id.frame_holder, mShortcutLoginFragment =new ShortcutLoginFragment(),
 //                        ShortcutLoginFragment.class.getName())
 //                .hide(mPasswordLoginFragment)
@@ -35,4 +35,5 @@ public class ValidateActivity extends BaseLiveDataActivity<ValidateViewModel> {
     public void onBackPressed() {
 
     }
+
 }
