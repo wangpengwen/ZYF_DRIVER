@@ -1,8 +1,10 @@
 package com.zyf.ui.main;
 
+import android.arch.lifecycle.Observer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -22,6 +24,7 @@ import com.zyf.model.UserModel;
 import com.zyf.ui.hangye.HangyeFragment;
 import com.zyf.ui.home.HomeFragment;
 import com.zyf.ui.info.ValidateActivity;
+import com.zyf.ui.info.ValidateViewModel;
 import com.zyf.ui.user.UserFragment;
 
 import java.util.List;
@@ -30,7 +33,7 @@ import java.util.concurrent.TimeUnit;
 import rx.Observable;
 import rx.subscriptions.CompositeSubscription;
 
-public class MainActivity extends BaseLiveDataActivity implements ActivityStackManager.ActivityStackMain {
+public class MainActivity extends BaseLiveDataActivity<ValidateViewModel> implements ActivityStackManager.ActivityStackMain {
 
     private ViewPager mViewPager;
     BottomNavigationViewEx mBottomNavigationView;
@@ -55,6 +58,7 @@ public class MainActivity extends BaseLiveDataActivity implements ActivityStackM
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initViewModel(ValidateViewModel.class, ValidateViewModel.class.getName(), false);
 
         mSubscription = new CompositeSubscription();
 
@@ -87,12 +91,16 @@ public class MainActivity extends BaseLiveDataActivity implements ActivityStackM
         });
 
         if(!UserModel.getInstance().isValidate()){
-            //未验证完，进入验证activity
-            IntentBuilder.Builder(this, ValidateActivity.class)
-                    .addFlag(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-                    .overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
-                    .finish(this)
-                    .startActivity();
+
+            mViewModel.getDriverInfo();
+            mViewModel.getDriverInfoLiveData().observe(this, o -> {
+                //未验证完，进入验证activity
+                IntentBuilder.Builder(this, ValidateActivity.class)
+                        .addFlag(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                        .overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
+                        .finish(this)
+                        .startActivity();
+            });
         }
     }
 

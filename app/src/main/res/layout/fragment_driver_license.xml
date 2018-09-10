@@ -83,6 +83,7 @@
                     app:srcCompat="@drawable/vector_add_gray"/>
 
                 <TextView
+                    android:id="@+id/txt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/icon1"
@@ -91,6 +92,12 @@
                     android:textSize="14sp"
                     android:textColor="@color/color_666666"
                     android:text="上传身份证（正面）"/>
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/img1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"/>
 
             </RelativeLayout>
 
@@ -115,6 +122,7 @@
                     app:srcCompat="@drawable/vector_add_gray"/>
 
                 <TextView
+                    android:id="@+id/txt2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/icon2"
@@ -123,6 +131,12 @@
                     android:textSize="14sp"
                     android:textColor="@color/color_666666"
                     android:text="上传身份证（反面）"/>
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/img2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"/>
 
             </RelativeLayout>
 
@@ -146,6 +160,7 @@
                     app:srcCompat="@drawable/vector_add_gray"/>
 
                 <TextView
+                    android:id="@+id/txt3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/icon3"
@@ -154,6 +169,12 @@
                     android:textSize="14sp"
                     android:textColor="@color/color_666666"
                     android:text="上传本人驾照"/>
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/img3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"/>
 
             </RelativeLayout>
 
@@ -178,6 +199,7 @@
                     app:srcCompat="@drawable/vector_add_gray"/>
 
                 <TextView
+                    android:id="@+id/txt4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/icon4"
@@ -186,6 +208,12 @@
                     android:textSize="14sp"
                     android:textColor="@color/color_666666"
                     android:text="上传本人/他人行驶证"/>
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/img4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"/>
 
             </RelativeLayout>
 

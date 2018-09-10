@@ -36,7 +36,7 @@ public class OssManager {
     private Context context;
     private OSS oss;
     private String bucketName = "";
-    private String imageEndpoint = "http://zyf-hwpic.oss-cn-beijing.aliyuncs.com";
+    private String imageEndpoint = "http://img-cn-beijing.aliyuncs.com";
     private OSSCredentialProvider credentialProvider;
 
     public OssManager(Context context, String bucketName) {

@@ -4,14 +4,18 @@ import android.arch.lifecycle.MutableLiveData;
 
 import com.biz.base.BaseViewModel;
 import com.zyf.model.AuthenticationModel;
+import com.zyf.model.ValidateModel;
+import com.zyf.ui.BaseUploadImageViewModel;
 
 /**
  * Created by ltxxx on 2018/9/7.
  */
 
-public class ValidateViewModel extends BaseViewModel {
+public class ValidateViewModel extends BaseUploadImageViewModel {
 
     protected MutableLiveData<Object> vehicleLiveData = new MutableLiveData<>();
+    protected MutableLiveData<ImgResult> imageLiveData = new MutableLiveData<>();
+    protected MutableLiveData<Object> driverInfoLiveData = new MutableLiveData<>();
 
     public void uploadVehicle(String vehicleType,String num){
 
@@ -25,7 +29,45 @@ public class ValidateViewModel extends BaseViewModel {
         });
     }
 
+    public void uploadImage(int type,String image) {
+        uploadImage(image, r -> {
+            ImgResult result = new ImgResult(type,r);
+            imageLiveData.postValue(result);
+        });
+    }
+
+    public void getDriverInfo(){
+
+        submitRequest(ValidateModel.driverInfo(), r -> {
+            if(r.isOk()){
+                driverInfoLiveData.postValue(r.data);
+            }else {
+                sendError(r);
+            }
+        });
+    }
+
     public MutableLiveData<Object> getVehicleLiveData() {
         return vehicleLiveData;
+    }
+
+    public MutableLiveData<ImgResult> getImageLiveData() {
+        return imageLiveData;
+    }
+
+    public MutableLiveData<Object> getDriverInfoLiveData() {
+        return driverInfoLiveData;
+    }
+
+    class ImgResult {
+
+        int type;
+
+        String r;
+
+        public ImgResult(int type, String r) {
+            this.type = type;
+            this.r = r;
+        }
     }
 }

@@ -64,8 +64,6 @@ public class AuthenticationActivity extends BaseLiveDataActivity<AuthenticationV
     TextView tvDnCode;
     @BindView(R.id.linearLayout)
     LinearLayout linearLayout;
-    @BindView(R.id.button)
-    Button button;
 
     private NeolixIdRead idRead;
 
@@ -116,8 +114,6 @@ public class AuthenticationActivity extends BaseLiveDataActivity<AuthenticationV
         unbinder = ButterKnife.bind(this);
         initViewModel(AuthenticationViewModel.class);
         mToolbar.setTitle("实名认证");
-
-        button.setVisibility(View.GONE);
 
         idRead = new NeolixIdRead(this, myListing);
         idRead.validNfc();

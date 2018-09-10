@@ -33,12 +33,12 @@ import java.util.UUID;
 public class OssManager {
     private Context context;
     private OSS oss;
-    private String bucketName = "zyf-pro";
+    private String bucketName = "zyf-hwpic";
 //    private String AK = "gU5GxYCrU4Srs3kv";
     private String AK = "LTAIOxcunsRGBb3b";
 //    private String SK = "I9eQmbaODqvRtJBFgjENoItiLjAyBM";
     private String SK = "VsUZIkJj1WyezIfsRETSSUmiImiv9b";
-    private String imageEndpoint = "http://zyf-hwpic.oss-cn-beijing.aliyuncs.com";
+    private String imageEndpoint = "http://img-cn-beijing.aliyuncs.com";
     private OSSCredentialProvider credentialProvider;
 
     public OssManager(Context context,String bucketName) {
