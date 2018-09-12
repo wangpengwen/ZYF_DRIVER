@@ -86,20 +86,7 @@ public class HomeFragment extends BaseLazyFragment<HomeViewModel> {
                 case 1:
 
                     break;
-                case 2:
-                    IntentBuilder.Builder().startParentActivity(this.getActivity(), UserOrderFragment.class,true);
-                    break;
-                case 3:
-                    ToastUtils.showLong(getBaseActivity(),"敬请期待...");
-                    break;
-                case 4:
-
-                    break;
-                case 5:
-                    IntentBuilder.Builder().setClass(getActivity(), AuthenticationActivity.class).startActivity();
-                    break;
             }
-
         });
     }
 
@@ -125,12 +112,8 @@ public class HomeFragment extends BaseLazyFragment<HomeViewModel> {
     public class HomeItemAdapter extends BaseQuickAdapter<Integer, BaseViewHolder> {
 
         public HomeItemAdapter(Context context){
-            super(R.layout.item_single_image_layout, Lists.newArrayList(R.mipmap.home_item_goods_receive,
-                    R.mipmap.home_item_scan,
-                    R.mipmap.home_item_pay,
-                    R.mipmap.home_item_invoice,
-                    R.mipmap.home_item_goods_list,
-                    R.mipmap.home_item_authentication));
+            super(R.layout.item_single_image_layout, Lists.newArrayList(R.mipmap.home_item_order_find,
+                    R.mipmap.home_item_web_order));
         }
 
         @Override
