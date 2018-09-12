@@ -102,6 +102,7 @@ public class VehicleFragment extends BaseLiveDataFragment<ValidateViewModel> {
 
         mViewModel.getVehicleLiveData().observe(this, o -> {
             IntentBuilder.Builder().setClass(getActivity(), AuthenticationActivity.class).startActivity();
+            finish();
         });
 
         RxUtil.click(btnConfirm).subscribe(o -> {

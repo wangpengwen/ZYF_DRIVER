@@ -142,7 +142,7 @@ public class UserModel {
     }
 
     public boolean isValidate(){
-        return mUserEntity != null && (mUserEntity.driverToExamine == 1);
+        return mUserEntity != null && (mUserEntity.driverFlag >= 5);
     }
 
     public UserModel() {

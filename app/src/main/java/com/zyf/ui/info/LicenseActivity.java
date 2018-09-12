@@ -1,10 +1,13 @@
 package com.zyf.ui.info;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.biz.base.BaseLiveDataActivity;
+import com.biz.util.IntentBuilder;
 import com.zyf.driver.ui.R;
+import com.zyf.ui.authentication.AuthenticationActivity;
 
 /**
  * Created by ltxxx on 2018/9/9.
@@ -33,7 +36,11 @@ public class LicenseActivity extends BaseLiveDataActivity<ValidateViewModel> {
 
     @Override
     public void onBackPressed() {
-
+        IntentBuilder.Builder(this, AuthenticationActivity.class)
+                .addFlag(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                .overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
+                .finish(this)
+                .startActivity();
     }
 
 }

@@ -16,6 +16,7 @@ public class ValidateViewModel extends BaseUploadImageViewModel {
     protected MutableLiveData<Object> vehicleLiveData = new MutableLiveData<>();
     protected MutableLiveData<ImgResult> imageLiveData = new MutableLiveData<>();
     protected MutableLiveData<Object> driverInfoLiveData = new MutableLiveData<>();
+    protected MutableLiveData<Object> licenseLiveData = new MutableLiveData<>();
 
     public void uploadVehicle(String vehicleType,String num){
 
@@ -47,6 +48,17 @@ public class ValidateViewModel extends BaseUploadImageViewModel {
         });
     }
 
+    public void uploadDriverLicense(String idFront,String idOppsite,String driverLicencePic,String driverVehiclePic){
+
+        submitRequest(ValidateModel.uploadDriverLicense(idFront, idOppsite, driverLicencePic, driverVehiclePic), r -> {
+            if(r.isOk()){
+                licenseLiveData.postValue(r.data);
+            }else {
+                sendError(r);
+            }
+        });
+    }
+
     public MutableLiveData<Object> getVehicleLiveData() {
         return vehicleLiveData;
     }
@@ -57,6 +69,10 @@ public class ValidateViewModel extends BaseUploadImageViewModel {
 
     public MutableLiveData<Object> getDriverInfoLiveData() {
         return driverInfoLiveData;
+    }
+
+    public MutableLiveData<Object> getLicenseLiveData() {
+        return licenseLiveData;
     }
 
     class ImgResult {

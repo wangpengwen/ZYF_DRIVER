@@ -24,4 +24,19 @@ public class ValidateModel {
                 .requestJson();
     }
 
+    public static Observable<ResponseJson<Object>> uploadDriverLicense(String idFront,String idOppsite,String driverLicencePic,String driverVehiclePic){
+
+        return RestRequest.<ResponseJson<Object>>builder()
+                .url("/api/driver/data/imageUrl.do")
+                .addBody("driverIdcardPicFront",idFront)
+                .addBody("driverIdcardPicReverse",idOppsite)
+                .addBody("driverLicencePic",driverLicencePic)
+                .addBody("driverVehiclePic",driverVehiclePic)
+                .restMethod(RestMethodEnum.POST)
+                .token(UserModel.getInstance().getUserToken())
+                .setToJsonType(new TypeToken<ResponseJson<Object>>() {
+                }.getType())
+                .requestJson();
+    }
+
 }

@@ -139,7 +139,12 @@ public class LicenseFragment extends BaseLiveDataFragment<ValidateViewModel> {
         });
 
         RxUtil.click(btnCommit).subscribe(o -> {
-            ToastUtils.showLong(getActivity(),"请求！！");
+            mViewModel.uploadDriverLicense(idFrontURL,idOppsiteURL,driverLicenseURL,vehicleLicenseURL);
+        });
+
+        mViewModel.getLicenseLiveData().observe(this, o -> {
+            ToastUtils.showLong(getActivity(),"上传成功");
+            finish();
         });
 
         mViewModel.getImageLiveData().observe(this, image -> {
@@ -147,28 +152,28 @@ public class LicenseFragment extends BaseLiveDataFragment<ValidateViewModel> {
             switch (image.type) {
 
                 case 1:
-                    idFrontURL = image.r;
+                    idFrontURL = GlideImageLoader.getOssImageUri(image.r);
                     icon1.setVisibility(View.GONE);
                     txt1.setVisibility(View.GONE);
                     img1.setVisibility(View.VISIBLE);
                     Glide.with(img1).load(GlideImageLoader.getOssImageUri(idFrontURL)).into(img1);
                     break;
                 case 2:
-                    idOppsiteURL = image.r;
+                    idOppsiteURL = GlideImageLoader.getOssImageUri(image.r);
                     icon2.setVisibility(View.GONE);
                     txt2.setVisibility(View.GONE);
                     img2.setVisibility(View.VISIBLE);
                     Glide.with(img2).load(GlideImageLoader.getOssImageUri(idOppsiteURL)).into(img2);
                     break;
                 case 3:
-                    driverLicenseURL = image.r;
+                    driverLicenseURL = GlideImageLoader.getOssImageUri(image.r);
                     icon3.setVisibility(View.GONE);
                     txt3.setVisibility(View.GONE);
                     img3.setVisibility(View.VISIBLE);
                     Glide.with(img3).load(GlideImageLoader.getOssImageUri(driverLicenseURL)).into(img3);
                     break;
                 case 4:
-                    vehicleLicenseURL = image.r;
+                    vehicleLicenseURL = GlideImageLoader.getOssImageUri(image.r);
                     icon4.setVisibility(View.GONE);
                     txt4.setVisibility(View.GONE);
                     img4.setVisibility(View.VISIBLE);

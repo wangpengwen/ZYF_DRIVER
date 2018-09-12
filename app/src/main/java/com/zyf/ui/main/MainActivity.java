@@ -98,7 +98,6 @@ public class MainActivity extends BaseLiveDataActivity<ValidateViewModel> implem
                 IntentBuilder.Builder(this, ValidateActivity.class)
                         .addFlag(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
                         .overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
-                        .finish(this)
                         .startActivity();
             });
         }
