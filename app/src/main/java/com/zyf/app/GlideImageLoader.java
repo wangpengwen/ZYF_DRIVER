@@ -24,13 +24,13 @@ public class GlideImageLoader extends ImageLoader {
         if (uri.contains("http")) {
             return uri;
         }
-        String url = UrlUtils.addEndSeparator("https://zyf-hwpic.oss-cn-beijing.aliyuncs.com/") + UrlUtils.deleteBeginSeparator(uri);
+        String url = UrlUtils.addEndSeparator("http://zyf-hwpic.oss-cn-beijing.aliyuncs.com/") + UrlUtils.deleteBeginSeparator(uri);
         LogUtil.print(url);
         return url;
     }
     public static String trimOss(String uri){
         if(TextUtils.isEmpty(uri)) return uri;
-        String headUri=UrlUtils.addEndSeparator("https://zyf-hwpic.oss-cn-beijing.aliyuncs.com/");
+        String headUri=UrlUtils.addEndSeparator("http://zyf-hwpic.oss-cn-beijing.aliyuncs.com/");
         if(!TextUtils.isEmpty(headUri)){
             return uri.replace(headUri,"");
         }

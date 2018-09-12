@@ -23,12 +23,65 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/white">
 
+        <TextView
+            android:id="@+id/tv_order_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/red_light"
+            android:textSize="18sp"
+            android:text="即时订单"/>
+
+        <LinearLayout
+            android:id="@+id/layout_person_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_666666"
+                android:textSize="12sp"
+                tools:text="王先生"/>
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/color_666666"
+                android:textSize="12sp"
+                tools:text="2018-09-12 23:21"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/vector_location_green"
+            android:drawablePadding="5dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/layout_person_info"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_person_info"
+            android:layout_marginRight="15dp"
+            android:textColor="@color/color_333333"
+            android:textSize="14sp"
+            tools:text="1.7公里"/>
+
         <ImageView
             android:id="@+id/view_red_dot"
             android:layout_width="9dp"
             android:layout_height="9dp"
             android:src="@drawable/shape_cycle"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_person_info"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="15dp"/>
@@ -62,7 +115,7 @@
             android:gravity="center"
             android:textColor="@color/color_333333"
             android:textSize="16sp"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_person_info"
             app:layout_constraintEnd_toStartOf="@+id/tv_status"
             app:layout_constraintLeft_toRightOf="@+id/view_red_dot"
             tools:text="鑫盛大厦1号楼北门" />
@@ -101,13 +154,23 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_to_address_detail"
             tools:text="济南市历下区新悦大街1299号" />
 
+        <Button
+            android:id="@+id/btn_taking_order"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_recipients"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="20dp"
+            android:text="立即接单"/>
+
         <TextView
             android:id="@+id/tv_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/vector_array_right_333"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_person_info"
             android:layout_marginRight="15dp"
             android:layout_marginTop="10dp"
             android:drawablePadding="@dimen/dp_4"
