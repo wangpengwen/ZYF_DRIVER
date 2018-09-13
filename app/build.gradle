@@ -114,5 +114,5 @@ dependencies {
     implementation 'cn.bingoogolapple:bga-zxing:1.1.9@aar'
     implementation 'com.github.chihane:JDAddressSelector:1.1.4'
     implementation(name: 'neolixlibrary-debug', ext: 'aar')
-    implementation 'com.tencent.map:tencent-map-vector-sdk:latest.release'
+    implementation files('libs/BaiduLBS_Android.jar')
 }

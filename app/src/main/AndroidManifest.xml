@@ -104,9 +104,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <!--<meta-data-->
+            <!--android:name="TencentMapSDK"-->
+            <!--android:value="B6MBZ-E4YLP-NOJDB-VNRQH-7KGGK-GSF75"/>-->
+
         <meta-data
-            android:name="TencentMapSDK"
-            android:value="B6MBZ-E4YLP-NOJDB-VNRQH-7KGGK-GSF75"/>
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="QxAnPziXEzXzaMF8Ieen07oR7GQ014lD" />
 
         <activity android:name="com.zyf.ui.login.LaunchActivity"
             android:screenOrientation="portrait"

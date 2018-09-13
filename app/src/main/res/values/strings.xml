@@ -127,6 +127,10 @@
     <string name="text_welcome">你好，%1$s</string>
     <string name="text_error_upload_image">上传图片失败</string>
 
+    <string name="text_meter">%1$s米</string>
+    <string name="text_kilometer">%1$s千米</string>
+    <string name="text_duration">大约%1$s分钟</string>
+
     <array name="array_photo">
         <item>@string/text_photo</item>
         <item>@string/text_choose_photo</item>
