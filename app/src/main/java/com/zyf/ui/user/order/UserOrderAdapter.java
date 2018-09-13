@@ -27,13 +27,13 @@ public class UserOrderAdapter extends BaseQuickAdapter<UserOrderItemEntity, User
         holder.tvFromAddressDetail.setText(item.getSenderAddr());
         holder.tvToAddressDetail.setText(item.getReciverAddr());
 
-        if("0".equals(item.getOrderManifestState())){
-            holder.tvOrderStatus.setText("未完成");
-        }else if("1".equals(item.getOrderManifestState())){
-            holder.tvOrderStatus.setText("已完成");
-        }else if("4".equals(item.getOrderManifestState())){
-            holder.tvOrderStatus.setText("货到付款");
-        }
+//        if("0".equals(item.getOrderManifestState())){
+//            holder.tvOrderStatus.setText("未完成");
+//        }else if("1".equals(item.getOrderManifestState())){
+//            holder.tvOrderStatus.setText("已完成");
+//        }else if("4".equals(item.getOrderManifestState())){
+//            holder.tvOrderStatus.setText("货到付款");
+//        }
         holder.tvPrice.setText(item.getCarriage()+"元");
     }
 }

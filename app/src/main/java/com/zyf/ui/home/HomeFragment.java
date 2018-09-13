@@ -22,6 +22,7 @@ import com.zyf.driver.ui.R;
 import com.zyf.ui.authentication.AuthenticationActivity;
 import com.zyf.ui.user.UserInfoFragment;
 import com.zyf.ui.user.order.UserOrderFragment;
+import com.zyf.ui.user.order.WebOrderFragment;
 import com.zyf.ui.user.settings.SettingsActivity;
 import com.zyf.widget.GridSpacingItemDecoration;
 
@@ -84,7 +85,7 @@ public class HomeFragment extends BaseLazyFragment<HomeViewModel> {
 
                     break;
                 case 1:
-
+                    IntentBuilder.Builder().startParentActivity(this.getActivity(), WebOrderFragment.class,true);
                     break;
             }
         });

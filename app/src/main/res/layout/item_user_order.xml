@@ -32,7 +32,7 @@
             android:layout_marginLeft="@dimen/dp_10"
             android:layout_marginTop="5dp"
             android:textColor="@color/red_light"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:text="即时订单"/>
 
         <LinearLayout
@@ -64,6 +64,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tv_distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/vector_location_green"
@@ -116,7 +117,7 @@
             android:textColor="@color/color_333333"
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@+id/layout_person_info"
-            app:layout_constraintEnd_toStartOf="@+id/tv_status"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/view_red_dot"
             tools:text="鑫盛大厦1号楼北门" />
 
@@ -125,7 +126,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tv_from_address_detail"
-            app:layout_constraintEnd_toStartOf="@+id/tv_status"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/view_red_dot"
             android:layout_marginTop="@dimen/dp_4"
             tools:text="济南市历下区新悦大街1299号"/>
@@ -140,7 +141,7 @@
             android:textColor="@color/color_333333"
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@+id/tv_sender"
-            app:layout_constraintEnd_toStartOf="@+id/tv_status"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/view_red_dot"
             tools:text="新一台物流园" />
 
@@ -149,7 +150,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            app:layout_constraintEnd_toStartOf="@+id/tv_status"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/view_red_dot"
             app:layout_constraintTop_toBottomOf="@+id/tv_to_address_detail"
             tools:text="济南市历下区新悦大街1299号" />
@@ -163,21 +164,6 @@
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="20dp"
             android:text="立即接单"/>
-
-        <TextView
-            android:id="@+id/tv_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableRight="@drawable/vector_array_right_333"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_person_info"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="10dp"
-            android:drawablePadding="@dimen/dp_4"
-            android:gravity="center_vertical"
-            android:textColor="@color/color_333333"
-            android:textSize="16sp"
-            tools:text="已完成"/>
 
         <TextView
             android:id="@+id/tv_price"

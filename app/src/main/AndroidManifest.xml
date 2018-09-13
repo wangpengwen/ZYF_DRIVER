@@ -67,8 +67,6 @@
     <!-- 不是SDK需要的权限，是示例中的后台唤醒定位需要的权限 -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-
-
     <!-- 需要运行时注册的权限 -->
     <!--用于进行网络定位-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -105,6 +103,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="TencentMapSDK"
+            android:value="B6MBZ-E4YLP-NOJDB-VNRQH-7KGGK-GSF75"/>
 
         <activity android:name="com.zyf.ui.login.LaunchActivity"
             android:screenOrientation="portrait"
@@ -164,6 +166,8 @@
             android:windowSoftInputMode="adjustPan"/>
 
         <activity android:name="com.zyf.ui.info.LicenseActivity"/>
+
+        <activity android:name="com.zyf.ui.map.MapRouteActivity"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"

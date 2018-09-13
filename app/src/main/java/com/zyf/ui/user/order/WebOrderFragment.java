@@ -26,7 +26,7 @@ import butterknife.Unbinder;
  * Created by TCJK on 2018/5/29.
  */
 
-public class UserOrderFragment extends BaseLiveDataFragment<UserOrderViewModel> {
+public class WebOrderFragment extends BaseLiveDataFragment<UserOrderViewModel> {
 
     Unbinder unbinder;
 
@@ -54,14 +54,14 @@ public class UserOrderFragment extends BaseLiveDataFragment<UserOrderViewModel> 
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         unbinder = ButterKnife.bind(this, view);
-        setTitle("订单管理");
+        setTitle("附近订单");
 
         mTabLayout = findViewById(R.id.tabs);
         TabUtils.setIndicator(mTabLayout, Utils.dip2px(12));
         mViewPager = findViewById(R.id.viewpager);
 
-        List<String> titles = Lists.newArrayList(getString(R.string.text_unfinished), getString(R.string.text_finished));
-        List<Fragment> fragments = Lists.newArrayList(UserOrderListFragment.newInstance(UserOrderListFragment.TYPE_UNFINISHED),UserOrderListFragment.newInstance(UserOrderListFragment.TYPE_FINISHED));
+        List<String> titles = Lists.newArrayList(getString(R.string.text_take), getString(R.string.text_delivery));
+        List<Fragment> fragments = Lists.newArrayList(WebOrderListFragment.newInstance(WebOrderListFragment.TYPE_FIRST),WebOrderListFragment.newInstance(WebOrderListFragment.TYPE_LAST));
         mViewPager.setAdapter(new FragmentAdapter(getChildFragmentManager(), fragments, titles));
         mViewPager.setOffscreenPageLimit(fragments.size());
         mViewPager.setAnimationCacheEnabled(false);

@@ -23,9 +23,6 @@ public class UserOrderHolder extends BaseViewHolder {
     TextView tvToAddressDetail;
     @BindView(R.id.tv_recipients)
     TextView tvRecipients;
-
-    @BindView(R.id.tv_status)
-    TextView tvOrderStatus;
     @BindView(R.id.tv_price)
     TextView tvPrice;
 

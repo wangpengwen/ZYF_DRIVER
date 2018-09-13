@@ -35,11 +35,13 @@
     <string name="toast_input_phone">请正确输入手机号</string>
     <string name="text_error_mobile_valid">请输入正确的手机号</string>
     <string name="text_error_sms_code_valid">请输入正确的验证码</string>
-    
+
     <string name="text_unfinished">未完成</string>
     <string name="text_finished">已完成</string>
-    <string name="text_cod">货到付款</string>
-    
+
+    <string name="text_take">上门取货</string>
+    <string name="text_delivery">送货上门</string>
+
     <string name="action_home">首页</string>
     <string name="action_mine">我的</string>
 

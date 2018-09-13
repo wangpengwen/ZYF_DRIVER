@@ -114,5 +114,5 @@ dependencies {
     implementation 'cn.bingoogolapple:bga-zxing:1.1.9@aar'
     implementation 'com.github.chihane:JDAddressSelector:1.1.4'
     implementation(name: 'neolixlibrary-debug', ext: 'aar')
-    implementation files('libs/Android_KM300BU_SDK_CPCL_V0.2.jar')
+    implementation 'com.tencent.map:tencent-map-vector-sdk:latest.release'
 }

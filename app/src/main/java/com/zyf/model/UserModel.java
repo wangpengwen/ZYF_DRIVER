@@ -130,7 +130,8 @@ public class UserModel {
 //        return getUserDepot(true);
 //    }
     public String getUserToken() {
-        return mUserEntity == null ? "" : mUserEntity.driverToken;
+//        return mUserEntity == null ? "" : mUserEntity.driverToken;
+        return "20df1aed-6fc5-469a-9c0d-baa4cf984f02";
     }
 
     public String getUserId() {

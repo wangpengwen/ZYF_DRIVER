@@ -38,8 +38,6 @@ public class MainActivity extends BaseLiveDataActivity<ValidateViewModel> implem
     private ViewPager mViewPager;
     BottomNavigationViewEx mBottomNavigationView;
 
-    View advBtn;
-
     protected Boolean isFirst = true;
     private CompositeSubscription mSubscription;
 
@@ -84,11 +82,6 @@ public class MainActivity extends BaseLiveDataActivity<ValidateViewModel> implem
         mBottomNavigationView.setupWithViewPager(mViewPager);
         mViewPager.setOffscreenPageLimit(fragments.size());
         mViewPager.setAnimationCacheEnabled(false);
-
-        advBtn = findViewById(R.id.btn_ad);
-        RxUtil.click(advBtn).subscribe(o -> {
-            IntentBuilder.Builder().startParentActivity(this.getActivity(), HangyeFragment.class,true);
-        });
 
         if(!UserModel.getInstance().isValidate()){
 
