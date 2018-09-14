@@ -13,6 +13,7 @@ import com.biz.util.Lists;
 import com.biz.widget.recyclerview.SuperRefreshManager;
 import com.zyf.driver.ui.R;
 import com.zyf.event.UserOrderEvent;
+import com.zyf.event.WebOrderEvent;
 import com.zyf.model.entity.order.WebOrderEntity;
 import com.zyf.ui.map.MapRouteActivity;
 
@@ -160,7 +161,7 @@ public class WebOrderListFragment extends BaseLazyFragment<WebOrderViewModel> {
 //            mViewModel.getHistory(carNo);
 //    }
 
-    public void onEventMainThread(UserOrderEvent event){
+    public void onEventMainThread(WebOrderEvent event){
         if (mSuperRefreshManager != null){
             mSuperRefreshManager.autoRefresh();
         }

@@ -48,7 +48,7 @@ public class UserOrderListFragment extends BaseLazyFragment<UserOrderViewModel> 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        initViewModel(UserOrderViewModel.class,this.toString() + "" + UserOrderViewModel.class.getCanonicalName(),true);
+        initViewModel(UserOrderViewModel.class,this.toString() + "" + UserOrderViewModel.class.getCanonicalName(),false);
 
         EventBus.getDefault().register(this);
 
@@ -138,7 +138,7 @@ public class UserOrderListFragment extends BaseLazyFragment<UserOrderViewModel> 
 
     @Override
     public void lazyLoad() {
-        mViewModel.getUserOrder();
+//        mViewModel.getUserOrder();
     }
 
     @Override

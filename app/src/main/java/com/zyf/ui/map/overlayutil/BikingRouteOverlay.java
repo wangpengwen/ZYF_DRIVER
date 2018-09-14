@@ -85,7 +85,7 @@ public class BikingRouteOverlay extends OverlayManager {
                     .position(mRouteLine.getStarting().getLocation())
                             .icon(getStartMarker() != null ? getStartMarker() :
                                     BitmapDescriptorFactory
-                                            .fromAssetWithDpi("Icon_start.png")).zIndex(10));
+                                            .fromAssetWithDpi("SDK_Default_Icon_Start.png")).zIndex(10));
         }
         // terminal
         if (mRouteLine.getTerminal() != null) {
@@ -94,7 +94,7 @@ public class BikingRouteOverlay extends OverlayManager {
                             .position(mRouteLine.getTerminal().getLocation())
                                     .icon(getTerminalMarker() != null ? getTerminalMarker() :
                                             BitmapDescriptorFactory
-                                                    .fromAssetWithDpi("Icon_end.png"))
+                                                    .fromAssetWithDpi("SDK_Default_Icon_End.png"))
                                                             .zIndex(10));
         }
 

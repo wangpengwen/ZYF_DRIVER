@@ -46,8 +46,15 @@ public class WebOrderHolder extends BaseViewHolder {
 
     public void bindData(WebOrderEntity item,WebOrderViewModel viewModel){
 
-        tvName.setText(item.getStartName());
-        tvTime.setText(item.webInsDate);
+        if(item.getWebIsLast() == 1){
+            //最后一公里
+            tvName.setText(item.getEndName());
+            tvTime.setText(item.getEndPhone());
+        }else {
+            //第一公里
+            tvName.setText(item.getStartName());
+            tvTime.setText(item.startPhone);
+        }
         tvDistance.setText(item.webDistance+"公里");
         tvFromAddressDetail.setText(item.startAddr);
         tvToAddressDetail.setText(item.endAddr);

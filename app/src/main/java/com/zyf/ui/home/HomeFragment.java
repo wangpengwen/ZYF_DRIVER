@@ -22,7 +22,6 @@ import com.zyf.driver.ui.R;
 import com.zyf.model.UserModel;
 import com.zyf.ui.info.ValidateViewModel;
 import com.zyf.ui.user.UserInfoFragment;
-import com.zyf.ui.user.order.UserOrderFragment;
 import com.zyf.ui.user.order.WebOrderFragment;
 import com.zyf.ui.user.settings.SettingsActivity;
 import com.zyf.widget.GridSpacingItemDecoration;
@@ -90,7 +89,7 @@ public class HomeFragment extends BaseLazyFragment<HomeViewModel> {
                     break;
                 case 1:
                     if(!UserModel.getInstance().isReview()){
-
+                        //未审核
                         validateViewModel.getDriverInfo();
                         validateViewModel.getDriverInfoLiveData().observe(this, o -> {
 
@@ -100,9 +99,13 @@ public class HomeFragment extends BaseLazyFragment<HomeViewModel> {
                                 //未审核
                                 ToastUtils.showLong(getActivity(),"请耐心等待管理员审核后使用");
                             }else {
+                                //已审核
                                 IntentBuilder.Builder().startParentActivity(this.getActivity(), WebOrderFragment.class,true);
                             }
                         });
+                    }else {
+                        //已审核
+                        IntentBuilder.Builder().startParentActivity(this.getActivity(), WebOrderFragment.class,true);
                     }
                     break;
             }

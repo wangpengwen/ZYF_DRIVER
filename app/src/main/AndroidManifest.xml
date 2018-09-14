@@ -175,6 +175,8 @@
 
         <activity android:name="com.zyf.ui.map.MapRouteActivity"/>
 
+        <activity android:name="com.zyf.ui.user.order.RoutePlanActivity"/>
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}"

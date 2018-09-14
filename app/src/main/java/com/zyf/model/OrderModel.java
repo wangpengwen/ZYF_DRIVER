@@ -12,6 +12,7 @@ import com.zyf.model.entity.order.OrderRecipientsEntity;
 import com.zyf.model.entity.order.OrderSenderEntity;
 import com.zyf.model.entity.order.PrePayEntity;
 import com.zyf.model.entity.order.UserOrderListEntity;
+import com.zyf.model.entity.order.WebOrderEntity;
 import com.zyf.net.RestRequest;
 
 import java.util.List;
@@ -224,6 +225,17 @@ public class OrderModel {
                 .restMethod(RestMethodEnum.POST)
                 .token(UserModel.getInstance().getUserToken())
                 .setToJsonType(new TypeToken<ResponseJson<String>>() {
+                }.getType())
+                .requestJson();
+    }
+
+    public static Observable<ResponseJson<WebOrderEntity>> lastBeforeFinish(){
+
+        return RestRequest.<ResponseJson<WebOrderEntity>>builder()
+                .url("/api/get/shrt/drv/devli/order.do")
+                .restMethod(RestMethodEnum.POST)
+                .token(UserModel.getInstance().getUserToken())
+                .setToJsonType(new TypeToken<ResponseJson<WebOrderEntity>>() {
                 }.getType())
                 .requestJson();
     }

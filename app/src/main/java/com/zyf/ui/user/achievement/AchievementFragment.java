@@ -46,7 +46,7 @@ public class AchievementFragment extends BaseLiveDataFragment<AchievementViewMod
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        initViewModel(AchievementViewModel.class, AchievementViewModel.class.getName(), true);
+        initViewModel(AchievementViewModel.class, AchievementViewModel.class.getName(), false);
     }
 
     @Override
@@ -68,25 +68,25 @@ public class AchievementFragment extends BaseLiveDataFragment<AchievementViewMod
         unbinder = ButterKnife.bind(this, view);
         setTitle("我的业绩");
 
-        mViewModel.getData();
-        mViewModel.dataLiveData.observe(this, o -> {
-            if(o!=null && o.getDayDto()!=null){
-
-                AchievementDayEntity dayDto = o.getDayDto();
-
-                tvDayCarriage.setText(dayDto.getDayCarriage()+"元");
-                tvDayaddfee.setText(dayDto.getDayAddedFee()+"元");
-                tvDaycod.setText(dayDto.getDayCod()+"元");
-                tvDaycollect.setText(dayDto.getDayCollect()+"元");
-                tvDayorder.setText(dayDto.getDayOrder()+"单");
-                tvDayCollectOrder.setText(dayDto.getDayCollectOrder()+"单");
-            }
-
-            if(o!=null && o.getList()!=null){
-                ChartManager.initStatisticsChat(mChart,o.getList());
-                ChartManager.initCarriageChat(mCarriageChart,o.getList());
-            }
-        });
+//        mViewModel.getData();
+//        mViewModel.dataLiveData.observe(this, o -> {
+//            if(o!=null && o.getDayDto()!=null){
+//
+//                AchievementDayEntity dayDto = o.getDayDto();
+//
+//                tvDayCarriage.setText(dayDto.getDayCarriage()+"元");
+//                tvDayaddfee.setText(dayDto.getDayAddedFee()+"元");
+//                tvDaycod.setText(dayDto.getDayCod()+"元");
+//                tvDaycollect.setText(dayDto.getDayCollect()+"元");
+//                tvDayorder.setText(dayDto.getDayOrder()+"单");
+//                tvDayCollectOrder.setText(dayDto.getDayCollectOrder()+"单");
+//            }
+//
+//            if(o!=null && o.getList()!=null){
+//                ChartManager.initStatisticsChat(mChart,o.getList());
+//                ChartManager.initCarriageChat(mCarriageChart,o.getList());
+//            }
+//        });
         mChart.setNoDataText("暂无数据");
         mChart.setNoDataTextColor(Color.parseColor("#c7c7c7"));
         mCarriageChart.setNoDataText("暂无数据");

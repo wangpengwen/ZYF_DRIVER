@@ -34,7 +34,7 @@ public class UserInfoFragment extends BaseLiveDataFragment<UserViewModel> {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        initViewModel(UserViewModel.class, UserViewModel.class.getName(), true);
+        initViewModel(UserViewModel.class, UserViewModel.class.getName(), false);
     }
 
     @Override
@@ -55,14 +55,14 @@ public class UserInfoFragment extends BaseLiveDataFragment<UserViewModel> {
         super.onViewCreated(view, savedInstanceState);
         setTitle("个人信息");
 
-        mViewModel.userInfo();
-        mViewModel.getInfoLiveData().observe(this, userEntity -> {
-
-            tvName.setText(userEntity.driverName);
-            tvIdCard.setText("");
-            tvCity.setText("");
-            tvInviterMobile.setText("");
-        });
+//        mViewModel.userInfo();
+//        mViewModel.getInfoLiveData().observe(this, userEntity -> {
+//
+//            tvName.setText(userEntity.driverName);
+//            tvIdCard.setText("");
+//            tvCity.setText("");
+//            tvInviterMobile.setText("");
+//        });
     }
 
 

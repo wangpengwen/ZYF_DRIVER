@@ -16,6 +16,7 @@ import com.biz.util.RxUtil;
 import com.biz.util.ToastUtils;
 import com.biz.util.Utils;
 import com.zyf.driver.ui.R;
+import com.zyf.event.WebOrderEvent;
 import com.zyf.model.entity.order.WebOrderEntity;
 import com.zyf.ui.authentication.AuthenticationOrderActivity;
 import com.zyf.ui.order.FirstDriverFinishQRCodeFragment;
@@ -24,6 +25,7 @@ import com.zyf.ui.scan.ScanActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
 
 /**
  * Title: MapRouteActivity
@@ -100,7 +102,12 @@ public class MapRouteActivity extends BaseLiveDataActivity<OrderViewModel> {
 
         mViewModel.getLastFinishLiveData().observe(this, s -> {
             ToastUtils.showLong(this,"订单配送完成");
+            EventBus.getDefault().post(new WebOrderEvent());
             finish();
+        });
+
+        mViewModel.getLastBeforeFinishLiveData().observe(this, s -> {
+            mViewModel.lastDriverFinish(s.webDrvId,"");
         });
     }
 
@@ -181,13 +188,14 @@ public class MapRouteActivity extends BaseLiveDataActivity<OrderViewModel> {
         if(requestCode==TYPE_FIRST_RECEIVE_VALIDATE&&resultCode==RESULT_OK){
             mViewModel.firstDriverReceive(entity.webDrvId,data.getStringExtra(IntentBuilder.KEY_KEY2));
         }else if(requestCode==TYPE_FIRST_FINISH_QRCODE&&resultCode==RESULT_OK) {
+            EventBus.getDefault().post(new WebOrderEvent());
             finish();
         }else if(requestCode==TYPE_LAST_RECEIVE_QRCODE&&resultCode==RESULT_OK){
             step = 2;
             initData();
         }else if(requestCode==TYPE_LAST_FINISH_VALIDATE&&resultCode==RESULT_OK){
-            //17接口 TODO orderDrvId
-            mViewModel.lastDriverFinish(entity.webDrvId,"");
+            //15接口 orderDrvId
+            mViewModel.lastBeforeFinish();
         }
     }
 

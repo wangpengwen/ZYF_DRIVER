@@ -9,6 +9,7 @@ import com.zyf.model.entity.order.OrderDetailEntity;
 import com.zyf.model.entity.order.OrderQRCodeEntity;
 import com.zyf.model.entity.order.OrderRecipientsEntity;
 import com.zyf.model.entity.order.OrderSenderEntity;
+import com.zyf.model.entity.order.WebOrderEntity;
 
 /**
  * Created by TCJK on 2018/6/5.
@@ -23,6 +24,7 @@ public class OrderViewModel extends BaseViewModel {
     protected MutableLiveData<Object> firstReceiveLiveData = new MutableLiveData<>();
     protected MutableLiveData<String> firstFinishLiveData = new MutableLiveData<>();
     protected MutableLiveData<String> lastFinishLiveData = new MutableLiveData<>();
+    protected MutableLiveData<WebOrderEntity> lastBeforeFinishLiveData = new MutableLiveData<>();
 
     public void createOrder(OrderSenderEntity sender, OrderRecipientsEntity recipients, GoodsInfoEntity goodsInfo,String remark,String orderCod,String addtionalCostPrice){
 
@@ -122,6 +124,20 @@ public class OrderViewModel extends BaseViewModel {
         });
     }
 
+    public void lastBeforeFinish(){
+
+        submitRequest(OrderModel.lastBeforeFinish(), r -> {
+
+            if(r.isOk()){
+
+                lastBeforeFinishLiveData.postValue(r.data);
+            }else {
+
+                sendError(r);
+            }
+        });
+    }
+
     public MutableLiveData<OrderDetailEntity> getCreateOrderLiveData() {
         return createOrderLiveData;
     }
@@ -148,5 +164,9 @@ public class OrderViewModel extends BaseViewModel {
 
     public MutableLiveData<String> getLastFinishLiveData() {
         return lastFinishLiveData;
+    }
+
+    public MutableLiveData<WebOrderEntity> getLastBeforeFinishLiveData() {
+        return lastBeforeFinishLiveData;
     }
 }

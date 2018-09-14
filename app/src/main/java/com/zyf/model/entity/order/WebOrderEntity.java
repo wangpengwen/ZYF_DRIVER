@@ -248,6 +248,9 @@ public class WebOrderEntity implements Parcelable {
         this.webIsLast = webIsLast;
     }
 
+    public WebOrderEntity() {
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -280,9 +283,6 @@ public class WebOrderEntity implements Parcelable {
         dest.writeInt(this.webIsLast);
     }
 
-    public WebOrderEntity() {
-    }
-
     protected WebOrderEntity(Parcel in) {
         this.webId = in.readString();
         this.webInsDate = in.readString();
@@ -309,7 +309,7 @@ public class WebOrderEntity implements Parcelable {
         this.webIsLast = in.readInt();
     }
 
-    public static final Parcelable.Creator<WebOrderEntity> CREATOR = new Parcelable.Creator<WebOrderEntity>() {
+    public static final Creator<WebOrderEntity> CREATOR = new Creator<WebOrderEntity>() {
         @Override
         public WebOrderEntity createFromParcel(Parcel source) {
             return new WebOrderEntity(source);
