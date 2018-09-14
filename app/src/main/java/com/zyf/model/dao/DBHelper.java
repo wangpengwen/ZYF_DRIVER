@@ -20,7 +20,7 @@ import java.io.File;
  * @version 1.0
  */
 public class DBHelper {
-    public static final int DB_VERSION = 1;
+    public static final int DB_VERSION = 2;
     public static final String DB_NAME = DB_VERSION + "cache2";
     private static DBHelper mDBHelper;
     private AppDataBase mAppDataBase;

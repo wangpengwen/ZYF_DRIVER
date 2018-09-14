@@ -3,6 +3,7 @@ package com.zyf.model;
 import com.biz.http.ResponseJson;
 import com.biz.http.RestMethodEnum;
 import com.google.gson.reflect.TypeToken;
+import com.zyf.model.entity.UserEntity;
 import com.zyf.net.RestRequest;
 
 import rx.Observable;
@@ -13,13 +14,13 @@ import rx.Observable;
 
 public class ValidateModel {
 
-    public static Observable<ResponseJson<Object>> driverInfo(){
+    public static Observable<ResponseJson<UserEntity>> driverInfo(){
 
-        return RestRequest.<ResponseJson<Object>>builder()
+        return RestRequest.<ResponseJson<UserEntity>>builder()
                 .url("/api/data/get.do")
                 .restMethod(RestMethodEnum.POST)
                 .token(UserModel.getInstance().getUserToken())
-                .setToJsonType(new TypeToken<ResponseJson<Object>>() {
+                .setToJsonType(new TypeToken<ResponseJson<UserEntity>>() {
                 }.getType())
                 .requestJson();
     }

@@ -130,8 +130,7 @@ public class UserModel {
 //        return getUserDepot(true);
 //    }
     public String getUserToken() {
-//        return mUserEntity == null ? "" : mUserEntity.driverToken;
-        return "20df1aed-6fc5-469a-9c0d-baa4cf984f02";
+        return mUserEntity == null ? "" : mUserEntity.driverToken;
     }
 
     public String getUserId() {
@@ -144,6 +143,10 @@ public class UserModel {
 
     public boolean isValidate(){
         return mUserEntity != null && (mUserEntity.driverFlag >= 5);
+    }
+
+    public boolean isReview(){
+        return mUserEntity != null && (mUserEntity.driverToExamine == 1);
     }
 
     public UserModel() {

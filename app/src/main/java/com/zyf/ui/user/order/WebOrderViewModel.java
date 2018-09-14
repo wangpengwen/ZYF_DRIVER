@@ -17,6 +17,7 @@ import java.util.List;
 public class WebOrderViewModel extends BaseViewModel {
 
     protected MutableLiveData<WebOrderEntity> webOrderLiveData = new MutableLiveData<>();
+    protected MutableLiveData<WebOrderEntity> takingWebOrderLiveData = new MutableLiveData<>();
 
     public void getWebOrder(){
 
@@ -30,7 +31,23 @@ public class WebOrderViewModel extends BaseViewModel {
         });
     }
 
+    public void takingWebOrder(WebOrderEntity entity){
+
+        submitRequest(WebOrderModel.takingWebOrder(entity.webId), r -> {
+
+            if(r.isOk()){
+                takingWebOrderLiveData.postValue(entity);
+            }else {
+                sendError(r);
+            }
+        });
+    }
+
     public MutableLiveData<WebOrderEntity> getWebOrderLiveData() {
         return webOrderLiveData;
+    }
+
+    public MutableLiveData<WebOrderEntity> getTakingWebOrderLiveData() {
+        return takingWebOrderLiveData;
     }
 }

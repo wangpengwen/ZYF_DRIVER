@@ -56,7 +56,7 @@ public class MainActivity extends BaseLiveDataActivity<ValidateViewModel> implem
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initViewModel(ValidateViewModel.class, ValidateViewModel.class.getName(), false);
+        initViewModel(ValidateViewModel.class, ValidateViewModel.class.getName(), true);
 
         mSubscription = new CompositeSubscription();
 
@@ -87,11 +87,16 @@ public class MainActivity extends BaseLiveDataActivity<ValidateViewModel> implem
 
             mViewModel.getDriverInfo();
             mViewModel.getDriverInfoLiveData().observe(this, o -> {
-                //未验证完，进入验证activity
-                IntentBuilder.Builder(this, ValidateActivity.class)
-                        .addFlag(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-                        .overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
-                        .startActivity();
+
+                UserModel.getInstance().setUserEntity(o);
+
+                if(!UserModel.getInstance().isValidate()){
+                    //未验证完，进入验证activity
+                    IntentBuilder.Builder(this, ValidateActivity.class)
+                            .addFlag(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                            .overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
+                            .startActivity();
+                }
             });
         }
     }

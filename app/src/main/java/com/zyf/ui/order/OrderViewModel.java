@@ -20,6 +20,8 @@ public class OrderViewModel extends BaseViewModel {
     protected MutableLiveData<OrderDetailEntity> orderDetailLiveData = new MutableLiveData<>();
     protected MutableLiveData<OrderQRCodeEntity> qrcodeLiveData = new MutableLiveData<>();
     protected MutableLiveData<Boolean> codLiveData = new MutableLiveData<>();
+    protected MutableLiveData<Object> firstReceiveLiveData = new MutableLiveData<>();
+    protected MutableLiveData<String> firstFinishLiveData = new MutableLiveData<>();
 
     public void createOrder(OrderSenderEntity sender, OrderRecipientsEntity recipients, GoodsInfoEntity goodsInfo,String remark,String orderCod,String addtionalCostPrice){
 
@@ -77,6 +79,34 @@ public class OrderViewModel extends BaseViewModel {
         });
     }
 
+    public void firstDriverReceive(String webDrvId,String idNum){
+
+        submitRequest(OrderModel.firstDriverReceive(webDrvId,idNum), r -> {
+
+            if(r.isOk()){
+
+                firstReceiveLiveData.postValue(true);
+            }else {
+
+                sendError(r);
+            }
+        });
+    }
+
+    public void firstDriverFinish(String webDrvId){
+
+        submitRequest(OrderModel.firstDriverFinish(webDrvId), r -> {
+
+            if(r.isOk()){
+
+                firstFinishLiveData.postValue(r.data);
+            }else {
+
+                sendError(r);
+            }
+        });
+    }
+
     public MutableLiveData<OrderDetailEntity> getCreateOrderLiveData() {
         return createOrderLiveData;
     }
@@ -91,5 +121,13 @@ public class OrderViewModel extends BaseViewModel {
 
     public MutableLiveData<Boolean> getCodLiveData() {
         return codLiveData;
+    }
+
+    public MutableLiveData<Object> getFirstReceiveLiveData() {
+        return firstReceiveLiveData;
+    }
+
+    public MutableLiveData<String> getFirstFinishLiveData() {
+        return firstFinishLiveData;
     }
 }

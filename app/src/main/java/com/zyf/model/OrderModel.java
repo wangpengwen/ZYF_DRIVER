@@ -189,4 +189,29 @@ public class OrderModel {
                 }.getType())
                 .requestJson();
     }
+
+    public static Observable<ResponseJson<Object>> firstDriverReceive(String webDrvId,String idNum){
+
+        return RestRequest.<ResponseJson<Object>>builder()
+                .addBody("webDrvId",webDrvId)
+                .addBody("senderIdcard",idNum)
+                .url("/api/shrt/drv/receive/goods.do")
+                .restMethod(RestMethodEnum.POST)
+                .token(UserModel.getInstance().getUserToken())
+                .setToJsonType(new TypeToken<ResponseJson<Object>>() {
+                }.getType())
+                .requestJson();
+    }
+
+    public static Observable<ResponseJson<String>> firstDriverFinish(String webDrvId){
+
+        return RestRequest.<ResponseJson<String>>builder()
+                .addBody("webDrvId",webDrvId)
+                .url("/api/shrt/drv/cmpl/qr/code.do")
+                .restMethod(RestMethodEnum.POST)
+                .token(UserModel.getInstance().getUserToken())
+                .setToJsonType(new TypeToken<ResponseJson<String>>() {
+                }.getType())
+                .requestJson();
+    }
 }

@@ -19,7 +19,8 @@ import com.biz.util.ToastUtils;
 import com.biz.util.Utils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zyf.driver.ui.R;
-import com.zyf.ui.authentication.AuthenticationActivity;
+import com.zyf.model.UserModel;
+import com.zyf.ui.info.ValidateViewModel;
 import com.zyf.ui.user.UserInfoFragment;
 import com.zyf.ui.user.order.UserOrderFragment;
 import com.zyf.ui.user.order.WebOrderFragment;
@@ -40,10 +41,13 @@ public class HomeFragment extends BaseLazyFragment<HomeViewModel> {
     HomeItemAdapter adapter;
     Unbinder unbinder;
 
+    ValidateViewModel validateViewModel;
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         initViewModel(HomeViewModel.class,HomeViewModel.class.getName(),true);
+        validateViewModel = registerViewModel(ValidateViewModel.class,false,true);
     }
 
     @Override
@@ -85,7 +89,21 @@ public class HomeFragment extends BaseLazyFragment<HomeViewModel> {
 
                     break;
                 case 1:
-                    IntentBuilder.Builder().startParentActivity(this.getActivity(), WebOrderFragment.class,true);
+                    if(!UserModel.getInstance().isReview()){
+
+                        validateViewModel.getDriverInfo();
+                        validateViewModel.getDriverInfoLiveData().observe(this, o -> {
+
+                            UserModel.getInstance().setUserEntity(o);
+
+                            if(!UserModel.getInstance().isReview()){
+                                //未审核
+                                ToastUtils.showLong(getActivity(),"请耐心等待管理员审核后使用");
+                            }else {
+                                IntentBuilder.Builder().startParentActivity(this.getActivity(), WebOrderFragment.class,true);
+                            }
+                        });
+                    }
                     break;
             }
         });

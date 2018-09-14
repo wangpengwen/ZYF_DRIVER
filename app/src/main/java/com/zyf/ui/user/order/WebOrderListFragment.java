@@ -8,15 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.biz.base.BaseLazyFragment;
-import com.biz.util.DialogUtil;
 import com.biz.util.IntentBuilder;
 import com.biz.util.Lists;
 import com.biz.widget.recyclerview.SuperRefreshManager;
 import com.zyf.driver.ui.R;
 import com.zyf.event.UserOrderEvent;
-import com.zyf.model.entity.order.UserOrderItemEntity;
 import com.zyf.model.entity.order.WebOrderEntity;
-import com.zyf.ui.order.OrderDetailFragment;
+import com.zyf.ui.map.MapRouteActivity;
 
 import java.util.List;
 
@@ -86,7 +84,7 @@ public class WebOrderListFragment extends BaseLazyFragment<WebOrderViewModel> {
         mSuperRefreshManager.setEnableLoadMore(false);
         mSuperRefreshManager.getRecyclerView().setBackgroundResource(R.color.color_background);
 
-        mAdapter = new WebOrderAdapter(type);
+        mAdapter = new WebOrderAdapter(type,mViewModel);
         mSuperRefreshManager.setAdapter(mAdapter);
 //        mAdapter.setOnItemClickListener((adapter, view1, position) -> {
 //
@@ -128,6 +126,14 @@ public class WebOrderListFragment extends BaseLazyFragment<WebOrderViewModel> {
             }else {
                 mAdapter.setNewData(Lists.newArrayList());
             }
+        });
+
+        mViewModel.getTakingWebOrderLiveData().observe(this, entity -> {
+            IntentBuilder.Builder(getActivity(), MapRouteActivity.class)
+                    .putExtra(IntentBuilder.KEY_DATA,entity)
+                    .putExtra(IntentBuilder.KEY_VALUE,1)
+                    .overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
+                    .startActivity();
         });
 
         mSuperRefreshManager.setOnRefreshListener(refreshlayout -> {

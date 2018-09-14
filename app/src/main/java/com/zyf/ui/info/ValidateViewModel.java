@@ -2,9 +2,10 @@ package com.zyf.ui.info;
 
 import android.arch.lifecycle.MutableLiveData;
 
-import com.biz.base.BaseViewModel;
 import com.zyf.model.AuthenticationModel;
+import com.zyf.model.UserModel;
 import com.zyf.model.ValidateModel;
+import com.zyf.model.entity.UserEntity;
 import com.zyf.ui.BaseUploadImageViewModel;
 
 /**
@@ -13,9 +14,9 @@ import com.zyf.ui.BaseUploadImageViewModel;
 
 public class ValidateViewModel extends BaseUploadImageViewModel {
 
-    protected MutableLiveData<Object> vehicleLiveData = new MutableLiveData<>();
+    protected MutableLiveData<UserEntity> vehicleLiveData = new MutableLiveData<>();
     protected MutableLiveData<ImgResult> imageLiveData = new MutableLiveData<>();
-    protected MutableLiveData<Object> driverInfoLiveData = new MutableLiveData<>();
+    protected MutableLiveData<UserEntity> driverInfoLiveData = new MutableLiveData<>();
     protected MutableLiveData<Object> licenseLiveData = new MutableLiveData<>();
 
     public void uploadVehicle(String vehicleType,String num){
@@ -23,7 +24,13 @@ public class ValidateViewModel extends BaseUploadImageViewModel {
         submitRequest(AuthenticationModel.bindVehicleInfo(vehicleType,num), r -> {
 
             if(r.isOk()){
+                UserModel.getInstance().getUserEntity().driverTruckNum = r.data.driverTruckNum;
+                UserModel.getInstance().getUserEntity().driverNum = num;
+                UserModel.getInstance().getUserEntity().driverFlag = r.data.driverFlag;
+                UserModel.getInstance().setUserEntity(UserModel.getInstance().getUserEntity());
+
                 vehicleLiveData.postValue(r.data);
+
             }else {
                 sendError(r);
             }
@@ -59,7 +66,7 @@ public class ValidateViewModel extends BaseUploadImageViewModel {
         });
     }
 
-    public MutableLiveData<Object> getVehicleLiveData() {
+    public MutableLiveData<UserEntity> getVehicleLiveData() {
         return vehicleLiveData;
     }
 
@@ -67,7 +74,7 @@ public class ValidateViewModel extends BaseUploadImageViewModel {
         return imageLiveData;
     }
 
-    public MutableLiveData<Object> getDriverInfoLiveData() {
+    public MutableLiveData<UserEntity> getDriverInfoLiveData() {
         return driverInfoLiveData;
     }
 

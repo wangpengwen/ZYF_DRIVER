@@ -32,4 +32,16 @@ public class WebOrderModel {
                 .requestJson();
     }
 
+    public static Observable<ResponseJson<Object>> takingWebOrder(String webId){
+
+        return RestRequest.<ResponseJson<Object>>builder()
+                .url("/api/shrt/drv/receive/order.do")
+                .addBody("webId",webId)
+                .restMethod(RestMethodEnum.POST)
+                .token(UserModel.getInstance().getUserToken())
+                .setToJsonType(new TypeToken<ResponseJson<Object>>() {
+                }.getType())
+                .requestJson();
+    }
+
 }

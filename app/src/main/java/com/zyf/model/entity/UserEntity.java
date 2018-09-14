@@ -33,18 +33,30 @@ public class UserEntity {
     public long driverId;
     @ColumnInfo(name = "driverNum")
     public String driverNum;
+    @ColumnInfo(name = "driverRealName")
+    public String driverRealName;
     @ColumnInfo(name = "driverName")
     public String driverName;
+    @ColumnInfo(name = "driverLicence")
+    public String driverLicence;
+    @ColumnInfo(name = "driverIdcard")
+    public String driverIdcard;
     @ColumnInfo(name = "driverPhone")
     public String driverPhone;
     @ColumnInfo(name = "driverToken")
     public String driverToken;
     @ColumnInfo(name = "driverIsShort")
     public int driverIsShort;
+    @ColumnInfo(name = "driverTruckNum")
+    public String driverTruckNum;
+    @ColumnInfo(name = "driverLicencePic")
+    public String driverLicencePic;
     @ColumnInfo(name = "driverToExamine")
     public int driverToExamine;
     @ColumnInfo(name = "driverFlag")
     public int driverFlag;
+    @ColumnInfo(name = "driverVehiclePic")
+    public String driverVehiclePic;
 
     //    public String getHideMobile() {
 //        if(!TextUtils.isEmpty(nickName)) return nickName;

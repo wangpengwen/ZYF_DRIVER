@@ -165,6 +165,8 @@
 
         <activity android:name="com.zyf.ui.authentication.AuthenticationActivity"/>
 
+        <activity android:name="com.zyf.ui.authentication.AuthenticationOrderActivity"/>
+
         <activity
             android:name="com.zyf.ui.info.ValidateActivity"
             android:windowSoftInputMode="adjustPan"/>

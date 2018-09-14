@@ -1,22 +1,16 @@
 package com.zyf.ui.user.order;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.biz.base.BaseViewHolder;
-import com.biz.util.IntentBuilder;
 import com.biz.util.RxUtil;
-import com.biz.util.ToastUtils;
 import com.zyf.driver.ui.R;
 import com.zyf.model.entity.order.WebOrderEntity;
-import com.zyf.ui.info.LicenseActivity;
-import com.zyf.ui.map.MapRouteActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import rx.functions.Action1;
 
 /**
  * Created by TCJK on 2018/5/30.
@@ -50,7 +44,7 @@ public class WebOrderHolder extends BaseViewHolder {
         ButterKnife.bind(this,itemView);
     }
 
-    public void bindData(WebOrderEntity item){
+    public void bindData(WebOrderEntity item,WebOrderViewModel viewModel){
 
         tvName.setText(item.getStartName());
         tvTime.setText(item.webInsDate);
@@ -60,10 +54,7 @@ public class WebOrderHolder extends BaseViewHolder {
         tvPrice.setText(item.webCarriage+"元");
 
         RxUtil.click(btnTakingOrder).subscribe(o -> {
-
-            IntentBuilder.Builder(getActivity(), MapRouteActivity.class)
-                    .overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
-                    .startActivity();
+            viewModel.takingWebOrder(item);
         });
     }
 }
