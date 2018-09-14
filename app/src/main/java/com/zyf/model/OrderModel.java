@@ -214,4 +214,17 @@ public class OrderModel {
                 }.getType())
                 .requestJson();
     }
+
+    public static Observable<ResponseJson<String>> lastDriverFinish(String orderDrvId,String picUrl){
+
+        return RestRequest.<ResponseJson<String>>builder()
+                .url("/api/shrt/drv/deliver/goods.do")
+                .addBody("orderDrvId",orderDrvId)
+                .addBody("picUrl",picUrl)
+                .restMethod(RestMethodEnum.POST)
+                .token(UserModel.getInstance().getUserToken())
+                .setToJsonType(new TypeToken<ResponseJson<String>>() {
+                }.getType())
+                .requestJson();
+    }
 }

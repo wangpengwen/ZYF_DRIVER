@@ -65,6 +65,7 @@ public class AuthenticationOrderActivity extends BaseLiveDataActivity<Authentica
     LinearLayout linearLayout;
 
     private NeolixIdRead idRead;
+    boolean isNeedValidate = true;
 
     NeolixIdRead.returnListing myListing = new NeolixIdRead.returnListing() {
         @Override
@@ -114,6 +115,8 @@ public class AuthenticationOrderActivity extends BaseLiveDataActivity<Authentica
         initViewModel(AuthenticationViewModel.class);
         mToolbar.setTitle("实名认证");
 
+        isNeedValidate = getIntent().getBooleanExtra(IntentBuilder.KEY_BOOLEAN,true);
+
         idRead = new NeolixIdRead(this, myListing);
         idRead.validNfc();
         RxUtil.click(tvNFCtip).subscribe(o -> {
@@ -122,7 +125,7 @@ public class AuthenticationOrderActivity extends BaseLiveDataActivity<Authentica
 
         RxUtil.click(confirmBtn).subscribe(o -> {
 
-            if(TextUtils.isEmpty(tvName.getText().toString())){
+            if(TextUtils.isEmpty(tvName.getText().toString()) && isNeedValidate){
                 ToastUtils.showLong(this,"请验证身份证");
                 return;
             }

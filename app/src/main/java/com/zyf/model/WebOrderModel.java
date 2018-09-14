@@ -44,4 +44,16 @@ public class WebOrderModel {
                 .requestJson();
     }
 
+    public static Observable<ResponseJson<Object>> lastDriverRecieve(String orderNum){
+
+        return RestRequest.<ResponseJson<Object>>builder()
+                .url("/api/last/mile/receive/goods.do")
+                .addBody("orderNum",orderNum)
+                .restMethod(RestMethodEnum.POST)
+                .token(UserModel.getInstance().getUserToken())
+                .setToJsonType(new TypeToken<ResponseJson<Object>>() {
+                }.getType())
+                .requestJson();
+    }
+
 }

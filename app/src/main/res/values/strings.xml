@@ -49,7 +49,7 @@
 
     <string name="text_confirm">确认</string>
 
-    <string name="text_scan_input">扫码入库</string>
+    <string name="text_scan_input">扫码取货</string>
 
     <string name="text_e_payment">电子支付</string>
     <string name="text_pay_on_delivery">货到付款</string>

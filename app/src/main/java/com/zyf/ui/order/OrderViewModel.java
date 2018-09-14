@@ -22,6 +22,7 @@ public class OrderViewModel extends BaseViewModel {
     protected MutableLiveData<Boolean> codLiveData = new MutableLiveData<>();
     protected MutableLiveData<Object> firstReceiveLiveData = new MutableLiveData<>();
     protected MutableLiveData<String> firstFinishLiveData = new MutableLiveData<>();
+    protected MutableLiveData<String> lastFinishLiveData = new MutableLiveData<>();
 
     public void createOrder(OrderSenderEntity sender, OrderRecipientsEntity recipients, GoodsInfoEntity goodsInfo,String remark,String orderCod,String addtionalCostPrice){
 
@@ -107,6 +108,20 @@ public class OrderViewModel extends BaseViewModel {
         });
     }
 
+    public void lastDriverFinish(String orderDrvId,String picUrl){
+
+        submitRequest(OrderModel.lastDriverFinish(orderDrvId,picUrl), r -> {
+
+            if(r.isOk()){
+
+                lastFinishLiveData.postValue(r.data);
+            }else {
+
+                sendError(r);
+            }
+        });
+    }
+
     public MutableLiveData<OrderDetailEntity> getCreateOrderLiveData() {
         return createOrderLiveData;
     }
@@ -129,5 +144,9 @@ public class OrderViewModel extends BaseViewModel {
 
     public MutableLiveData<String> getFirstFinishLiveData() {
         return firstFinishLiveData;
+    }
+
+    public MutableLiveData<String> getLastFinishLiveData() {
+        return lastFinishLiveData;
     }
 }

@@ -18,6 +18,7 @@ public class WebOrderViewModel extends BaseViewModel {
 
     protected MutableLiveData<WebOrderEntity> webOrderLiveData = new MutableLiveData<>();
     protected MutableLiveData<WebOrderEntity> takingWebOrderLiveData = new MutableLiveData<>();
+    protected MutableLiveData<Boolean> lastRecieveLiveData = new MutableLiveData<>();
 
     public void getWebOrder(){
 
@@ -43,11 +44,27 @@ public class WebOrderViewModel extends BaseViewModel {
         });
     }
 
+    public void lastDriverRecieve(String orderNum){
+
+        submitRequest(WebOrderModel.lastDriverRecieve(orderNum), r -> {
+
+            if(r.isOk()){
+                lastRecieveLiveData.postValue(true);
+            }else {
+                sendError(r);
+            }
+        });
+    }
+
     public MutableLiveData<WebOrderEntity> getWebOrderLiveData() {
         return webOrderLiveData;
     }
 
     public MutableLiveData<WebOrderEntity> getTakingWebOrderLiveData() {
         return takingWebOrderLiveData;
+    }
+
+    public MutableLiveData<Boolean> getLastRecieveLiveData() {
+        return lastRecieveLiveData;
     }
 }

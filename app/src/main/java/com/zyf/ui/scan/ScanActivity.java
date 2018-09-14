@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import com.biz.base.BaseLiveDataActivity;
 import com.biz.util.ToastUtils;
 import com.zyf.driver.ui.R;
+import com.zyf.ui.user.order.WebOrderViewModel;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,7 +29,7 @@ import cn.bingoogolapple.qrcode.zxing.ZXingView;
  * @version 1.0
  */
 
-public class ScanActivity extends BaseLiveDataActivity<ScanViewModel> implements QRCodeView.Delegate {
+public class ScanActivity extends BaseLiveDataActivity<WebOrderViewModel> implements QRCodeView.Delegate {
 
     private ZXingView mZXingView;
 
@@ -38,7 +39,7 @@ public class ScanActivity extends BaseLiveDataActivity<ScanViewModel> implements
         setContentView(R.layout.activity_scan_layout);
         mToolbar.setTitle(R.string.text_scan_input);
         mZXingView = findViewById(R.id.zxingview);
-        initViewModel(ScanViewModel.class);
+        initViewModel(WebOrderViewModel.class);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_GRANTED) {
@@ -52,8 +53,6 @@ public class ScanActivity extends BaseLiveDataActivity<ScanViewModel> implements
         }
 
     }
-
-
 
     @Override
     protected void onResume() {
@@ -103,18 +102,19 @@ public class ScanActivity extends BaseLiveDataActivity<ScanViewModel> implements
 
         if(TextUtils.isEmpty(orderNum)){
 
-            ToastUtils.showLong(this,"二维码入库失败，请联系管理员");
+            ToastUtils.showLong(this,"二维码信息错误，请联系管理员");
         }else {
 
-            mViewModel.intoStorage(orderNum);
+            mViewModel.lastDriverRecieve(orderNum);
         }
 
-        mViewModel.getIntoStorageLiveData().observe(this, aBoolean -> {
+        mViewModel.getLastRecieveLiveData().observe(this, aBoolean -> {
             if(aBoolean){
-                ToastUtils.showLong(this,"入库成功!");
+                ToastUtils.showLong(this,"接货成功!");
+                setResult(RESULT_OK);
                 finish();
             }else {
-                ToastUtils.showLong(this,"入库失败,请重新扫码");
+                ToastUtils.showLong(this,"接货失败,请重新扫码");
             }
         });
     }
