@@ -21,13 +21,37 @@
 
             <TextView
                 android:id="@+id/tv_desc"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/layout_order_info"
                 android:padding="@dimen/dp_10"
                 android:textSize="14sp"
                 android:textColor="@color/colorPrimary"
                 tools:text="去鑫盛大厦"/>
+
+            <TextView
+                android:id="@+id/tv_route_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/tv_desc"
+                app:layout_constraintTop_toTopOf="@+id/tv_desc"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_desc"
+                android:layout_marginLeft="20dp"
+                android:textSize="14sp"
+                android:textColor="@color/color_666666"
+                tools:text="3.6km"/>
+
+            <TextView
+                android:id="@+id/tv_route_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/tv_route_distance"
+                app:layout_constraintTop_toTopOf="@+id/tv_desc"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_desc"
+                android:layout_marginLeft="10dp"
+                android:textSize="14sp"
+                android:textColor="@color/color_666666"
+                tools:text="59分钟"/>
 
             <com.baidu.mapapi.map.MapView
                 android:id="@+id/mapview"

@@ -74,7 +74,7 @@ public class LocationHelper {
         if (mLocationClient == null) return;
         LocationClientOption option = new LocationClientOption();
         option.setOpenGps(true);// 打开gps
-        option.setCoorType("bd09ll"); // 设置坐标类型
+        option.setCoorType("gcj02"); // 设置坐标类型
         option.setIsNeedAddress(isNeedAddress);//设置是否需要地址信息，默认为无地址
         option.setTimeOut(timeOut);//设置网络超时时间
         //option.setScanSpan(1000);// 设置发起定位请求的间隔时间为1000ms
