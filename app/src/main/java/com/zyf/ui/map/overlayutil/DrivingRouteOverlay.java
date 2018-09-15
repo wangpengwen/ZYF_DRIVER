@@ -81,7 +81,7 @@ public class DrivingRouteOverlay extends OverlayManager {
                     .position(mRouteLine.getStarting().getLocation())
                             .icon(getStartMarker() != null ? getStartMarker() :
                                     BitmapDescriptorFactory
-                                            .fromAssetWithDpi("Icon_start.png")).zIndex(10));
+                                            .fromAssetWithDpi("SDK_Default_Icon_Start.png")).zIndex(10));
         }
         if (mRouteLine.getTerminal() != null) {
             overlayOptionses
@@ -89,7 +89,7 @@ public class DrivingRouteOverlay extends OverlayManager {
                             .position(mRouteLine.getTerminal().getLocation())
                                     .icon(getTerminalMarker() != null ? getTerminalMarker() :
                                             BitmapDescriptorFactory
-                                                    .fromAssetWithDpi("Icon_end.png"))
+                                                    .fromAssetWithDpi("SDK_Default_Icon_End.png"))
                                                             .zIndex(10));
         }
         // poly line
@@ -172,10 +172,10 @@ public class DrivingRouteOverlay extends OverlayManager {
     }
     public List<BitmapDescriptor> getCustomTextureList() {
         ArrayList<BitmapDescriptor> list = new ArrayList<BitmapDescriptor>();
-        list.add(BitmapDescriptorFactory.fromAsset("Icon_road_blue_arrow.png"));
-        list.add(BitmapDescriptorFactory.fromAsset("Icon_road_green_arrow.png"));
-        list.add(BitmapDescriptorFactory.fromAsset("Icon_road_yellow_arrow.png"));
-        list.add(BitmapDescriptorFactory.fromAsset("Icon_road_red_arrow.png"));
+        list.add(BitmapDescriptorFactory.fromAsset("SDK_Default_Route_Texture_Bule_Arrow.png"));
+        list.add(BitmapDescriptorFactory.fromAsset("SDK_Default_Traffic_Texture_Smooth.png"));
+        list.add(BitmapDescriptorFactory.fromAsset("SDK_Default_Traffic_Texture_Slow.png"));
+        list.add(BitmapDescriptorFactory.fromAsset("SDK_Default_Traffic_Texture_Congestion.png"));
         list.add(BitmapDescriptorFactory.fromAsset("Icon_road_nofocus.png"));
         return list;
     }

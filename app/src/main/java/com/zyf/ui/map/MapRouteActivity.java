@@ -161,9 +161,8 @@ public class MapRouteActivity extends BaseLiveDataActivity<OrderViewModel> imple
                 mLocationHelper.setUserLatLon(bdLocation.getLatitude(), bdLocation.getLongitude());
                 mLocationHelper.setCity(bdLocation.getCity());
                 setMapViewCenter();
-                mSearch = RoutePlanSearch.newInstance();
-                mSearch.setOnGetRoutePlanResultListener(this);
                 moveToLocation(new LatLng(bdLocation.getLatitude(), bdLocation.getLongitude()));
+                initData();
 //                stNode = PlanNode.withLocation(from);
 //                enNode = PlanNode.withLocation(to);
 //                mSearch.drivingSearch(new DrivingRoutePlanOption().from(stNode).to(enNode));
@@ -207,11 +206,15 @@ public class MapRouteActivity extends BaseLiveDataActivity<OrderViewModel> imple
 
                 case 1:
                     btn.setText("我已到达指定地点");
-                    from = new LatLng(mLocationHelper.getUserLat(), mLocationHelper.getUserLon());
-                    to = new LatLng(Double.parseDouble(entity.startX),Double.parseDouble(entity.startY));
-                    stNode = PlanNode.withLocation(from);
-                    enNode = PlanNode.withLocation(to);
-                    mSearch.drivingSearch(new DrivingRoutePlanOption().from(stNode).to(enNode));
+                    if(mLocationHelper.getUserLat() > 0){
+                        from = new LatLng(mLocationHelper.getUserLat(), mLocationHelper.getUserLon());
+                        to = new LatLng(Double.parseDouble(entity.startX),Double.parseDouble(entity.startY));
+                        stNode = PlanNode.withLocation(from);
+                        enNode = PlanNode.withLocation(to);
+                        mSearch = RoutePlanSearch.newInstance();
+                        mSearch.setOnGetRoutePlanResultListener(this);
+                        mSearch.drivingSearch(new DrivingRoutePlanOption().from(stNode).to(enNode));
+                    }
                     RxUtil.click(btn).subscribe(o -> {
                         startActivityForResult(new Intent(getActivity(), AuthenticationOrderActivity.class), TYPE_FIRST_RECEIVE_VALIDATE);
                     });
@@ -222,6 +225,8 @@ public class MapRouteActivity extends BaseLiveDataActivity<OrderViewModel> imple
                     to = new LatLng(Double.parseDouble(entity.endX),Double.parseDouble(entity.endY));
                     stNode = PlanNode.withLocation(from);
                     enNode = PlanNode.withLocation(to);
+                    mSearch = RoutePlanSearch.newInstance();
+                    mSearch.setOnGetRoutePlanResultListener(this);
                     mSearch.drivingSearch(new DrivingRoutePlanOption().from(stNode).to(enNode));
                     RxUtil.click(btn).subscribe(o -> {
                         IntentBuilder.Builder()
@@ -242,13 +247,29 @@ public class MapRouteActivity extends BaseLiveDataActivity<OrderViewModel> imple
 
                 case 1:
                     btn.setText("我已到达物流园");
+                    if(mLocationHelper.getUserLat() > 0){
+                        from = new LatLng(mLocationHelper.getUserLat(), mLocationHelper.getUserLon());
+                        to = new LatLng(Double.parseDouble(entity.startX),Double.parseDouble(entity.startY));
+                        stNode = PlanNode.withLocation(from);
+                        enNode = PlanNode.withLocation(to);
+                        mSearch = RoutePlanSearch.newInstance();
+                        mSearch.setOnGetRoutePlanResultListener(this);
+                        mSearch.drivingSearch(new DrivingRoutePlanOption().from(stNode).to(enNode));
 
+                    }
                     RxUtil.click(btn).subscribe(o -> {
                         startActivityForResult(new Intent(getActivity(), ScanActivity.class), TYPE_LAST_RECEIVE_QRCODE);
                     });
                     break;
                 case 2:
                     btn.setText("确认配送完成");
+                    from = new LatLng(Double.parseDouble(entity.startX),Double.parseDouble(entity.startY));
+                    to = new LatLng(Double.parseDouble(entity.endX),Double.parseDouble(entity.endY));
+                    stNode = PlanNode.withLocation(from);
+                    enNode = PlanNode.withLocation(to);
+                    mSearch = RoutePlanSearch.newInstance();
+                    mSearch.setOnGetRoutePlanResultListener(this);
+                    mSearch.drivingSearch(new DrivingRoutePlanOption().from(stNode).to(enNode));
                     RxUtil.click(btn).subscribe(o -> {
 
                         Intent intent = new Intent(getActivity(), AuthenticationOrderActivity.class);
@@ -337,6 +358,7 @@ public class MapRouteActivity extends BaseLiveDataActivity<OrderViewModel> imple
         }
         if (result.error == SearchResult.ERRORNO.NO_ERROR) {
             if (result.getRouteLines().size() > 0) {
+                mBaiduMap.clear();
                 nowResultDriving = result;
                 DrivingRouteLine line = nowResultDriving.getRouteLines().get(0);
                 DrivingRouteOverlay overlay = new DrivingRouteOverlay(mBaiduMap);
