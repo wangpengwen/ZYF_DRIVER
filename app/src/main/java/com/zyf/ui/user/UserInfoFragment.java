@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.biz.base.BaseLiveDataFragment;
 import com.zyf.driver.ui.R;
+import com.zyf.model.UserModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,9 +27,9 @@ public class UserInfoFragment extends BaseLiveDataFragment<UserViewModel> {
     TextView tvName;
     @BindView(R.id.tv_id_card)
     TextView tvIdCard;
-    @BindView(R.id.tv_city)
-    TextView tvCity;
-    @BindView(R.id.tv_inviter_mobile)
+//    @BindView(R.id.tv_city)
+//    TextView tvCity;
+    @BindView(R.id.tv_mobile)
     TextView tvInviterMobile;
 
     @Override
@@ -57,11 +58,11 @@ public class UserInfoFragment extends BaseLiveDataFragment<UserViewModel> {
 
 //        mViewModel.userInfo();
 //        mViewModel.getInfoLiveData().observe(this, userEntity -> {
-//
-//            tvName.setText(userEntity.driverName);
-//            tvIdCard.setText("");
+        if(UserModel.getInstance().getUserEntity()!=null)
+            tvName.setText(UserModel.getInstance().getUserEntity().driverRealName);
+            tvIdCard.setText(UserModel.getInstance().getUserEntity().driverIdcard);
 //            tvCity.setText("");
-//            tvInviterMobile.setText("");
+            tvInviterMobile.setText(UserModel.getInstance().getUserEntity().driverName);
 //        });
     }
 

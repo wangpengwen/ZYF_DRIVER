@@ -68,6 +68,36 @@
 
     </LinearLayout>
 
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:minHeight="45dp"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:weightSum="5"-->
+        <!--android:background="@color/white">-->
+
+        <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="2"-->
+            <!--android:paddingLeft="@dimen/dp_10"-->
+            <!--android:textSize="16sp"-->
+            <!--android:textColor="@color/color_333333"-->
+            <!--android:text="接单城市"/>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_city"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="3"-->
+            <!--android:paddingLeft="@dimen/dp_10"-->
+            <!--android:textSize="16sp"-->
+            <!--android:textColor="@color/color_999999"-->
+            <!--tools:text="济南"/>-->
+
+    <!--</LinearLayout>-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,40 +114,10 @@
             android:paddingLeft="@dimen/dp_10"
             android:textSize="16sp"
             android:textColor="@color/color_333333"
-            android:text="接单城市"/>
+            android:text="手机号"/>
 
         <TextView
-            android:id="@+id/tv_city"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:paddingLeft="@dimen/dp_10"
-            android:textSize="16sp"
-            android:textColor="@color/color_999999"
-            tools:text="济南"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="45dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:weightSum="5"
-        android:background="@color/white">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:paddingLeft="@dimen/dp_10"
-            android:textSize="16sp"
-            android:textColor="@color/color_333333"
-            android:text="邀请人手机号"/>
-
-        <TextView
-            android:id="@+id/tv_inviter_mobile"
+            android:id="@+id/tv_mobile"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"

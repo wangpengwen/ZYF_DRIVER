@@ -25,12 +25,14 @@ import com.zyf.driver.ui.R;
     public TextView mUserName;
     public View mAccountLayout;
     public ImageView mAvatar;
+    public TextView mUserMobile;
 
     public UserHeaderViewHolder(View itemView) {
         super(itemView);
         mAccountLayout = itemView.findViewById(R.id.rl_account);
         mUserName = itemView.findViewById(R.id.et_username);
         mAvatar = itemView.findViewById(R.id.avatar);
+        mUserMobile = itemView.findViewById(R.id.tv_mobile);
 //        Glide.with(headerBgIV).load(R.mipmap.mine_bg).apply(RequestOptions.centerCropTransform()).into(headerBgIV);
         mAccountLayout.setOnClickListener(this::info);
     }

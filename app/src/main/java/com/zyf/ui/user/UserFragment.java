@@ -96,7 +96,9 @@ public class UserFragment extends BaseLazyFragment<UserViewModel> {
             }
         });
 
-        mUserHeaderViewHolder.mUserName.setText(UserModel.getInstance().getUserName());
+        if(UserModel.getInstance().getUserEntity()!=null)
+            mUserHeaderViewHolder.mUserName.setText(UserModel.getInstance().getUserEntity().driverRealName);
+        mUserHeaderViewHolder.mUserMobile.setText(UserModel.getInstance().getUserName());
     }
 
     @Override

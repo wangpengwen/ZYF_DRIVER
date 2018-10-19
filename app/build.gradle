@@ -113,6 +113,6 @@ dependencies {
     implementation 'cn.bingoogolapple:bga-qrcodecore:1.1.9@aar'
     implementation 'cn.bingoogolapple:bga-zxing:1.1.9@aar'
     implementation 'com.github.chihane:JDAddressSelector:1.1.4'
-    implementation(name: 'neolixlibrary-debug', ext: 'aar')
+    implementation(name: 'NeolixSECertLibs_2.0.0', ext: 'aar')
     implementation files('libs/BaiduLBS_Android.jar')
 }

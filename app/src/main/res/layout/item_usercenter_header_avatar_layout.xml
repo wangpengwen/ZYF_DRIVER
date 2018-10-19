@@ -30,8 +30,10 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/avatar"
+                android:layout_alignTop="@+id/avatar"
+                android:layout_alignBottom="@+id/avatar"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
             <TextView
                     android:id="@+id/et_username"
@@ -44,6 +46,18 @@
                     android:textColor="@color/color_1a1a1a"
                     android:textSize="17dp"
                     tools:text="136****8888"/>
+
+            <TextView
+                android:id="@+id/tv_mobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:layout_marginTop="@dimen/padding_12"
+                android:textColor="@color/color_666666"
+                android:textSize="15dp"
+                tools:text="136****8888"/>
 
         </LinearLayout>
 
