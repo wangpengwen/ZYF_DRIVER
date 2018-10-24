@@ -15,7 +15,10 @@ import com.biz.widget.recyclerview.SuperRefreshManager;
 import com.zyf.event.UserOrderEvent;
 import com.zyf.model.entity.order.UserOrderItemEntity;
 import com.zyf.driver.ui.R;
+import com.zyf.model.entity.order.WebOrderEntity;
 import com.zyf.ui.order.OrderDetailFragment;
+
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -29,13 +32,13 @@ public class UserOrderListFragment extends BaseLazyFragment<UserOrderViewModel> 
 
     public static final String TYPE_FINISHED = "TYPE_FINISHED";
     public static final String TYPE_UNFINISHED = "TYPE_UNFINISHED";
-    public static final String TYPE_COD = "TYPE_COD";
 
     private SuperRefreshManager mSuperRefreshManager;
     Unbinder unbinder;
 
-    UserOrderAdapter mAdapter;
+    WebOrderAdapter mAdapter;
     String type = "";
+    List<WebOrderEntity> dataList = Lists.newArrayList();
 
     public static UserOrderListFragment newInstance(String type) {
         Bundle args = new Bundle();
@@ -48,7 +51,7 @@ public class UserOrderListFragment extends BaseLazyFragment<UserOrderViewModel> 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        initViewModel(UserOrderViewModel.class,this.toString() + "" + UserOrderViewModel.class.getCanonicalName(),false);
+        initViewModel(UserOrderViewModel.class,this.toString() + "" + UserOrderViewModel.class.getCanonicalName(),true);
 
         EventBus.getDefault().register(this);
 
@@ -81,43 +84,37 @@ public class UserOrderListFragment extends BaseLazyFragment<UserOrderViewModel> 
         mSuperRefreshManager.setEnableLoadMore(false);
         mSuperRefreshManager.getRecyclerView().setBackgroundResource(R.color.color_background);
 
-        mAdapter = new UserOrderAdapter(type);
+        mAdapter = new WebOrderAdapter(type,null);
         mSuperRefreshManager.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener((adapter, view1, position) -> {
 
-            UserOrderItemEntity item = (UserOrderItemEntity) adapter.getItem(position);
-            IntentBuilder.Builder()
-                    .putExtra(IntentBuilder.KEY_ORDER_ID,item.getOrderNum())
-                    .putExtra(IntentBuilder.KEY_TYPE,OrderDetailFragment.TYPE_REVIEW)
-                    .startParentActivity(getBaseActivity(), OrderDetailFragment.class,true);
+//            UserOrderItemEntity item = (UserOrderItemEntity) adapter.getItem(position);
+//            IntentBuilder.Builder()
+//                    .putExtra(IntentBuilder.KEY_ORDER_ID,item.getOrderNum())
+//                    .putExtra(IntentBuilder.KEY_TYPE,OrderDetailFragment.TYPE_REVIEW)
+//                    .startParentActivity(getBaseActivity(), OrderDetailFragment.class,true);
         });
 
         mAdapter.setEmptyView(View.inflate(getBaseActivity(), R.layout.item_empty_layout, null));
 
-        mViewModel.getUserOrderListLiveData().observe(this, o -> {
+        mViewModel.getUserOrderListLiveData().observe(this, list -> {
 
             mSuperRefreshManager.finishRefresh();
 
-            if(o!=null){
-
-                if(TYPE_FINISHED.equals(type)
-                        && o.getAlreadyPay() != null){
-                    mAdapter.setNewData(o.getAlreadyPay());
-                }else if(TYPE_UNFINISHED.equals(type)
-                        && o.getNoPay() != null){
-                    mAdapter.setNewData(o.getNoPay());
-                    mAdapter.setOnItemLongClickListener((adapter, view12, position) -> {
-                        DialogUtil.createDialogView(getActivity(), "是否删除该订单？", (dialog, which) -> {
-                            dialog.dismiss();
-                        }, R.string.text_cancel, (dialog, which) -> {
-                            // 删除
-                            mViewModel.delOrder(mAdapter.getItem(position).getOrderNum());
-                        }, R.string.text_confirm_del);
-                        return false;
-                    });
-                }else if(TYPE_COD.equals(type)){
-                    mAdapter.setNewData(o.getCod());
+            if(list!=null){
+                dataList.clear();
+                if(TYPE_FINISHED.equals(type)){
+                    for (WebOrderEntity webOrderEntity:list) {
+                        if(webOrderEntity.webOrderState == 4)
+                            dataList.add(webOrderEntity);
+                    }
+                }else if(TYPE_UNFINISHED.equals(type)){
+                    for (WebOrderEntity webOrderEntity:list) {
+                        if(webOrderEntity.webOrderState != 4)
+                            dataList.add(webOrderEntity);
+                    }
                 }
+                mAdapter.setNewData(dataList);
             }else {
                 mAdapter.setNewData(Lists.newArrayList());
             }
@@ -138,7 +135,7 @@ public class UserOrderListFragment extends BaseLazyFragment<UserOrderViewModel> 
 
     @Override
     public void lazyLoad() {
-//        mViewModel.getUserOrder();
+        mViewModel.getUserOrder();
     }
 
     @Override

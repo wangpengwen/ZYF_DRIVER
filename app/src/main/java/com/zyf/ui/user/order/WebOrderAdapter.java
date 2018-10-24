@@ -21,6 +21,6 @@ public class WebOrderAdapter extends BaseQuickAdapter<WebOrderEntity, WebOrderHo
 
     @Override
     protected void convert(WebOrderHolder holder, WebOrderEntity item) {
-        holder.bindData(item,mViewModel);
+        holder.bindData(type,item,mViewModel);
     }
 }

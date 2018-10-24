@@ -5,6 +5,9 @@ import android.arch.lifecycle.MutableLiveData;
 import com.biz.base.BaseViewModel;
 import com.zyf.model.OrderModel;
 import com.zyf.model.entity.order.UserOrderListEntity;
+import com.zyf.model.entity.order.WebOrderEntity;
+
+import java.util.List;
 
 /**
  * Created by TCJK on 2018/5/29.
@@ -12,7 +15,7 @@ import com.zyf.model.entity.order.UserOrderListEntity;
 
 public class UserOrderViewModel extends BaseViewModel {
 
-    protected MutableLiveData<UserOrderListEntity> userOrderListLiveData = new MutableLiveData<>();
+    protected MutableLiveData<List<WebOrderEntity>> userOrderListLiveData = new MutableLiveData<>();
     protected MutableLiveData<Boolean> delOrderLiveData = new MutableLiveData<>();
 
     public void getUserOrder(){
@@ -40,7 +43,7 @@ public class UserOrderViewModel extends BaseViewModel {
 
     }
 
-    public MutableLiveData<UserOrderListEntity> getUserOrderListLiveData() {
+    public MutableLiveData<List<WebOrderEntity>> getUserOrderListLiveData() {
         return userOrderListLiveData;
     }
 

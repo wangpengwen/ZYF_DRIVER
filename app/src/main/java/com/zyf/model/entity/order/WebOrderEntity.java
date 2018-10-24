@@ -63,6 +63,7 @@ public class WebOrderEntity implements Parcelable {
     public String cargoName;
     public String webDrvId;
     public int webIsLast;
+    public int webOrderState;
 
     public String getWebId() {
         return webId;
@@ -248,6 +249,14 @@ public class WebOrderEntity implements Parcelable {
         this.webIsLast = webIsLast;
     }
 
+    public int getWebOrderState() {
+        return webOrderState;
+    }
+
+    public void setWebOrderState(int webOrderState) {
+        this.webOrderState = webOrderState;
+    }
+
     public WebOrderEntity() {
     }
 
@@ -281,6 +290,7 @@ public class WebOrderEntity implements Parcelable {
         dest.writeString(this.cargoName);
         dest.writeString(this.webDrvId);
         dest.writeInt(this.webIsLast);
+        dest.writeInt(this.webOrderState);
     }
 
     protected WebOrderEntity(Parcel in) {
@@ -307,6 +317,7 @@ public class WebOrderEntity implements Parcelable {
         this.cargoName = in.readString();
         this.webDrvId = in.readString();
         this.webIsLast = in.readInt();
+        this.webOrderState = in.readInt();
     }
 
     public static final Creator<WebOrderEntity> CREATOR = new Creator<WebOrderEntity>() {

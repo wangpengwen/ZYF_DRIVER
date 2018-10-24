@@ -90,13 +90,13 @@ public class MainActivity extends BaseLiveDataActivity<ValidateViewModel> implem
 
                 UserModel.getInstance().setUserEntity(o);
 
-                if(!UserModel.getInstance().isValidate()){
-                    //未验证完，进入验证activity
-                    IntentBuilder.Builder(this, ValidateActivity.class)
-                            .addFlag(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-                            .overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
-                            .startActivity();
-                }
+//                if(!UserModel.getInstance().isValidate()){
+//                    //未验证完，进入验证activity
+//                    IntentBuilder.Builder(this, ValidateActivity.class)
+//                            .addFlag(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+//                            .overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
+//                            .startActivity();
+//                }
             });
         }
     }

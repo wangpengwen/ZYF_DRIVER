@@ -44,7 +44,21 @@ public class WebOrderHolder extends BaseViewHolder {
         ButterKnife.bind(this,itemView);
     }
 
-    public void bindData(WebOrderEntity item,WebOrderViewModel viewModel){
+    public void bindData(String type,WebOrderEntity item,WebOrderViewModel viewModel){
+
+        switch (type){
+
+            case WebOrderListFragment.TYPE_FIRST:
+            case WebOrderListFragment.TYPE_LAST:
+                tvOrderType.setText("即时订单");
+                break;
+            case UserOrderListFragment.TYPE_FINISHED:
+                tvOrderType.setText("完成订单");
+                break;
+            case UserOrderListFragment.TYPE_UNFINISHED:
+                tvOrderType.setText("未完成订单");
+                break;
+        }
 
         if(item.getWebIsLast() == 1){
             //最后一公里
@@ -60,8 +74,13 @@ public class WebOrderHolder extends BaseViewHolder {
         tvToAddressDetail.setText(item.endAddr);
         tvPrice.setText(item.webCarriage+"元");
 
-        RxUtil.click(btnTakingOrder).subscribe(o -> {
-            viewModel.takingWebOrder(item);
-        });
+        if(viewModel!=null){
+            btnTakingOrder.setVisibility(View.VISIBLE);
+            RxUtil.click(btnTakingOrder).subscribe(o -> {
+                viewModel.takingWebOrder(item);
+            });
+        }else {
+            btnTakingOrder.setVisibility(View.GONE);
+        }
     }
 }

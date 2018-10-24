@@ -58,11 +58,12 @@ public class UserInfoFragment extends BaseLiveDataFragment<UserViewModel> {
 
 //        mViewModel.userInfo();
 //        mViewModel.getInfoLiveData().observe(this, userEntity -> {
-        if(UserModel.getInstance().getUserEntity()!=null)
+        if(UserModel.getInstance().getUserEntity()!=null){
             tvName.setText(UserModel.getInstance().getUserEntity().driverRealName);
             tvIdCard.setText(UserModel.getInstance().getUserEntity().driverIdcard);
 //            tvCity.setText("");
             tvInviterMobile.setText(UserModel.getInstance().getUserEntity().driverName);
+        }
 //        });
     }
 

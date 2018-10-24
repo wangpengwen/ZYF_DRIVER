@@ -76,13 +76,13 @@ public class OrderModel {
                 .requestJson();
     }
 
-    public static Observable<ResponseJson<UserOrderListEntity>> userOrder(){
+    public static Observable<ResponseJson<List<WebOrderEntity>>> userOrder(){
 
-        return RestRequest.<ResponseJson<UserOrderListEntity>>builder()
-                .url("/business/orderhistory.do")
+        return RestRequest.<ResponseJson<List<WebOrderEntity>>>builder()
+                .url("/api/shrt/drv/all/order.do")
                 .restMethod(RestMethodEnum.POST)
                 .token(UserModel.getInstance().getUserToken())
-                .setToJsonType(new TypeToken<ResponseJson<UserOrderListEntity>>() {
+                .setToJsonType(new TypeToken<ResponseJson<List<WebOrderEntity>>>() {
                 }.getType())
                 .requestJson();
     }
