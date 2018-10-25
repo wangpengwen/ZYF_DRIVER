@@ -64,14 +64,14 @@ public class OrderModel {
                 .requestJson();
     }
 
-    public static Observable<ResponseJson<OrderDetailEntity>> requestOrder(String orderNum){
+    public static Observable<ResponseJson<WebOrderEntity>> requestOrder(String orderNum){
 
-        return RestRequest.<ResponseJson<OrderDetailEntity>>builder()
-                .url("/business/queryorder.do")
-                .addBody("orderNum", orderNum)
+        return RestRequest.<ResponseJson<WebOrderEntity>>builder()
+                .url("/api/shrt/drv/detail/order.do")
+                .addBody("webDrvId", orderNum)
                 .restMethod(RestMethodEnum.POST)
                 .token(UserModel.getInstance().getUserToken())
-                .setToJsonType(new TypeToken<ResponseJson<OrderDetailEntity>>() {
+                .setToJsonType(new TypeToken<ResponseJson<WebOrderEntity>>() {
                 }.getType())
                 .requestJson();
     }

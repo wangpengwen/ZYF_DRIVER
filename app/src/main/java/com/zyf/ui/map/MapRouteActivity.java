@@ -97,7 +97,7 @@ public class MapRouteActivity extends BaseLiveDataActivity<OrderViewModel> imple
     Button btn;
 
     WebOrderEntity entity;
-    int step = 0;
+    String step = "";
     boolean isLast = false;
 
     private BaiduMap mBaiduMap;
@@ -120,7 +120,6 @@ public class MapRouteActivity extends BaseLiveDataActivity<OrderViewModel> imple
         getLayoutInflater().inflate(R.layout.activity_route_map, findViewById(R.id.frame_holder));
 
         entity = getActivity().getIntent().getParcelableExtra(IntentBuilder.KEY_DATA);
-        step = getActivity().getIntent().getIntExtra(IntentBuilder.KEY_VALUE,0);
 
         initViewModel(OrderViewModel.class);
         ButterKnife.bind(this);
@@ -130,11 +129,12 @@ public class MapRouteActivity extends BaseLiveDataActivity<OrderViewModel> imple
 
         if(entity!=null){
             isLast = entity.getWebIsLast() != 0;
+            step = entity.getShrtDlvrState();
             initData();
         }
 
         mViewModel.getFirstReceiveLiveData().observe(this, o -> {
-            step = 2;
+            step = "1002";
             initData();
         });
 
@@ -204,7 +204,7 @@ public class MapRouteActivity extends BaseLiveDataActivity<OrderViewModel> imple
             //第一公里
             switch (step){
 
-                case 1:
+                case "1001":
                     btn.setText("我已到达指定地点");
                     if(mLocationHelper.getUserLat() > 0){
                         from = new LatLng(mLocationHelper.getUserLat(), mLocationHelper.getUserLon());
@@ -219,7 +219,7 @@ public class MapRouteActivity extends BaseLiveDataActivity<OrderViewModel> imple
                         startActivityForResult(new Intent(getActivity(), AuthenticationOrderActivity.class), TYPE_FIRST_RECEIVE_VALIDATE);
                     });
                     break;
-                case 2:
+                case "1002":
                     btn.setText("确认配送完成");
                     from = new LatLng(Double.parseDouble(entity.startX),Double.parseDouble(entity.startY));
                     to = new LatLng(Double.parseDouble(entity.endX),Double.parseDouble(entity.endY));
@@ -245,7 +245,7 @@ public class MapRouteActivity extends BaseLiveDataActivity<OrderViewModel> imple
             //最后一公里
             switch (step){
 
-                case 1:
+                case "2001":
                     btn.setText("我已到达物流园");
                     if(mLocationHelper.getUserLat() > 0){
                         from = new LatLng(mLocationHelper.getUserLat(), mLocationHelper.getUserLon());
@@ -261,7 +261,7 @@ public class MapRouteActivity extends BaseLiveDataActivity<OrderViewModel> imple
                         startActivityForResult(new Intent(getActivity(), ScanActivity.class), TYPE_LAST_RECEIVE_QRCODE);
                     });
                     break;
-                case 2:
+                case "2002":
                     btn.setText("确认配送完成");
                     from = new LatLng(Double.parseDouble(entity.startX),Double.parseDouble(entity.startY));
                     to = new LatLng(Double.parseDouble(entity.endX),Double.parseDouble(entity.endY));
@@ -305,7 +305,7 @@ public class MapRouteActivity extends BaseLiveDataActivity<OrderViewModel> imple
             EventBus.getDefault().post(new WebOrderEvent());
             finish();
         }else if(requestCode==TYPE_LAST_RECEIVE_QRCODE&&resultCode==RESULT_OK){
-            step = 2;
+            step = "2002";
             initData();
         }else if(requestCode==TYPE_LAST_FINISH_VALIDATE&&resultCode==RESULT_OK){
             //15接口 orderDrvId

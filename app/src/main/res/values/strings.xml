@@ -48,6 +48,7 @@
     <string name="text_order_list">订单列表</string>
 
     <string name="text_confirm">确认</string>
+    <string name="text_recover">恢复</string>
 
     <string name="text_scan_input">扫码取货</string>
 
@@ -131,6 +132,8 @@
     <string name="text_meter">%1$s米</string>
     <string name="text_kilometer">%1$s千米</string>
     <string name="text_duration">大约%1$s分钟</string>
+
+    <string name="text_recover_order">您有一个未完成的订单，是否恢复？</string>
 
     <array name="array_photo">
         <item>@string/text_photo</item>

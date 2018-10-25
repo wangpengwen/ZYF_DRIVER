@@ -88,11 +88,10 @@ public class UserOrderListFragment extends BaseLazyFragment<UserOrderViewModel> 
         mSuperRefreshManager.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener((adapter, view1, position) -> {
 
-//            UserOrderItemEntity item = (UserOrderItemEntity) adapter.getItem(position);
-//            IntentBuilder.Builder()
-//                    .putExtra(IntentBuilder.KEY_ORDER_ID,item.getOrderNum())
-//                    .putExtra(IntentBuilder.KEY_TYPE,OrderDetailFragment.TYPE_REVIEW)
-//                    .startParentActivity(getBaseActivity(), OrderDetailFragment.class,true);
+            WebOrderEntity item = (WebOrderEntity) adapter.getItem(position);
+            IntentBuilder.Builder()
+                    .putExtra(IntentBuilder.KEY_ORDER_ID,item.getWebDrvId())
+                    .startParentActivity(getBaseActivity(), OrderDetailFragment.class,true);
         });
 
         mAdapter.setEmptyView(View.inflate(getBaseActivity(), R.layout.item_empty_layout, null));

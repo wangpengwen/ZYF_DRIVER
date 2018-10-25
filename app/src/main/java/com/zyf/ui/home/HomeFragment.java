@@ -88,25 +88,25 @@ public class HomeFragment extends BaseLazyFragment<HomeViewModel> {
 
                     break;
                 case 1:
-//                    if(!UserModel.getInstance().isReview()){
-//                        //未审核
-//                        validateViewModel.getDriverInfo();
-//                        validateViewModel.getDriverInfoLiveData().observe(this, o -> {
-//
-//                            UserModel.getInstance().setUserEntity(o);
-//
-//                            if(!UserModel.getInstance().isReview()){
-//                                //未审核
-//                                ToastUtils.showLong(getActivity(),"请耐心等待管理员审核后使用");
-//                            }else {
-//                                //已审核
-//                                IntentBuilder.Builder().startParentActivity(this.getActivity(), WebOrderFragment.class,true);
-//                            }
-//                        });
-//                    }else {
+                    if(!UserModel.getInstance().isReview()){
+                        //未审核
+                        validateViewModel.getDriverInfo();
+                        validateViewModel.getDriverInfoLiveData().observe(this, o -> {
+
+                            UserModel.getInstance().setUserEntity(o);
+
+                            if(!UserModel.getInstance().isReview()){
+                                //未审核
+                                ToastUtils.showLong(getActivity(),"请耐心等待管理员审核后使用");
+                            }else {
+                                //已审核
+                                IntentBuilder.Builder().startParentActivity(this.getActivity(), WebOrderFragment.class,true);
+                            }
+                        });
+                    }else {
                         //已审核
                         IntentBuilder.Builder().startParentActivity(this.getActivity(), WebOrderFragment.class,true);
-//                    }
+                    }
                     break;
             }
         });

@@ -1,31 +1,29 @@
 package com.zyf.ui.main;
 
-import android.arch.lifecycle.Observer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.biz.base.BaseLiveDataActivity;
 import com.biz.base.FragmentAdapter;
 import com.biz.util.ActivityStackManager;
+import com.biz.util.DialogUtil;
 import com.biz.util.IntentBuilder;
 import com.biz.util.Lists;
-import com.biz.util.RxUtil;
 import com.biz.widget.BottomNavigationViewEx;
 import com.zyf.driver.ui.R;
 import com.zyf.model.UserModel;
-import com.zyf.ui.hangye.HangyeFragment;
 import com.zyf.ui.home.HomeFragment;
 import com.zyf.ui.info.ValidateActivity;
 import com.zyf.ui.info.ValidateViewModel;
+import com.zyf.ui.map.MapRouteActivity;
 import com.zyf.ui.user.UserFragment;
+import com.zyf.ui.user.order.WebOrderViewModel;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -37,6 +35,8 @@ public class MainActivity extends BaseLiveDataActivity<ValidateViewModel> implem
 
     private ViewPager mViewPager;
     BottomNavigationViewEx mBottomNavigationView;
+
+    private WebOrderViewModel webOrderViewModel;
 
     protected Boolean isFirst = true;
     private CompositeSubscription mSubscription;
@@ -57,6 +57,7 @@ public class MainActivity extends BaseLiveDataActivity<ValidateViewModel> implem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViewModel(ValidateViewModel.class, ValidateViewModel.class.getName(), true);
+        webOrderViewModel = registerViewModel(WebOrderViewModel.class,false,false);
 
         mSubscription = new CompositeSubscription();
 
@@ -83,6 +84,20 @@ public class MainActivity extends BaseLiveDataActivity<ValidateViewModel> implem
         mViewPager.setOffscreenPageLimit(fragments.size());
         mViewPager.setAnimationCacheEnabled(false);
 
+        webOrderViewModel.getUnfinishOrderLiveData().observe(this, webOrderEntity -> {
+
+            DialogUtil.createDialogView(getActivity(), R.string.text_recover_order,
+                    ((dialog, which) -> {
+                        dialog.dismiss();
+                    }), R.string.text_cancel,
+                    ((dialog, which) -> {
+                        IntentBuilder.Builder(getActivity(), MapRouteActivity.class)
+                                .putExtra(IntentBuilder.KEY_DATA,webOrderEntity)
+                                .overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
+                                .startActivity();
+                    }), R.string.text_recover);
+        });
+
         if(!UserModel.getInstance().isValidate()){
 
             mViewModel.getDriverInfo();
@@ -90,15 +105,22 @@ public class MainActivity extends BaseLiveDataActivity<ValidateViewModel> implem
 
                 UserModel.getInstance().setUserEntity(o);
 
-//                if(!UserModel.getInstance().isValidate()){
-//                    //未验证完，进入验证activity
-//                    IntentBuilder.Builder(this, ValidateActivity.class)
-//                            .addFlag(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-//                            .overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
-//                            .startActivity();
-//                }
+                if(!UserModel.getInstance().isValidate()){
+                    //未验证完，进入验证activity
+                    IntentBuilder.Builder(this, ValidateActivity.class)
+                            .addFlag(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                            .overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
+                            .startActivity();
+                }
             });
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(UserModel.getInstance().isValidate())
+            webOrderViewModel.recoverOrder();
     }
 
     public void onBackPressed() {

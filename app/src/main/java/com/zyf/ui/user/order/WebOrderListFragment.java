@@ -132,7 +132,6 @@ public class WebOrderListFragment extends BaseLazyFragment<WebOrderViewModel> {
         mViewModel.getTakingWebOrderLiveData().observe(this, entity -> {
             IntentBuilder.Builder(getActivity(), MapRouteActivity.class)
                     .putExtra(IntentBuilder.KEY_DATA,entity)
-                    .putExtra(IntentBuilder.KEY_VALUE,1)
                     .overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out)
                     .startActivity();
         });

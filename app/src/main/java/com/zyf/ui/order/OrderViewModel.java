@@ -18,7 +18,7 @@ import com.zyf.model.entity.order.WebOrderEntity;
 public class OrderViewModel extends BaseViewModel {
 
     protected MutableLiveData<OrderDetailEntity> createOrderLiveData = new MutableLiveData<>();
-    protected MutableLiveData<OrderDetailEntity> orderDetailLiveData = new MutableLiveData<>();
+    protected MutableLiveData<WebOrderEntity> orderDetailLiveData = new MutableLiveData<>();
     protected MutableLiveData<OrderQRCodeEntity> qrcodeLiveData = new MutableLiveData<>();
     protected MutableLiveData<Boolean> codLiveData = new MutableLiveData<>();
     protected MutableLiveData<Object> firstReceiveLiveData = new MutableLiveData<>();
@@ -138,20 +138,8 @@ public class OrderViewModel extends BaseViewModel {
         });
     }
 
-    public MutableLiveData<OrderDetailEntity> getCreateOrderLiveData() {
-        return createOrderLiveData;
-    }
-
-    public MutableLiveData<OrderDetailEntity> getOrderDetailLiveData() {
+    public MutableLiveData<WebOrderEntity> getOrderDetailLiveData() {
         return orderDetailLiveData;
-    }
-
-    public MutableLiveData<OrderQRCodeEntity> getQrcodeLiveData() {
-        return qrcodeLiveData;
-    }
-
-    public MutableLiveData<Boolean> getCodLiveData() {
-        return codLiveData;
     }
 
     public MutableLiveData<Object> getFirstReceiveLiveData() {

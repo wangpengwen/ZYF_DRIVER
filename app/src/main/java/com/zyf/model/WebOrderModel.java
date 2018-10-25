@@ -56,4 +56,14 @@ public class WebOrderModel {
                 .requestJson();
     }
 
+    public static Observable<ResponseJson<WebOrderEntity>> recoverOrder(){
+
+        return RestRequest.<ResponseJson<WebOrderEntity>>builder()
+                .url("/api/not/comple/order.do")
+                .restMethod(RestMethodEnum.POST)
+                .token(UserModel.getInstance().getUserToken())
+                .setToJsonType(new TypeToken<ResponseJson<WebOrderEntity>>() {
+                }.getType())
+                .requestJson();
+    }
 }
