@@ -62,7 +62,8 @@ public class WebOrderViewModel extends BaseViewModel {
         submitRequest(WebOrderModel.recoverOrder(), r -> {
 
             if(r.isOk()){
-                unfinishOrderLiveData.postValue(r.data);
+                if(r.data!=null)
+                    unfinishOrderLiveData.postValue(r.data);
             }else {
                 sendError(r);
             }

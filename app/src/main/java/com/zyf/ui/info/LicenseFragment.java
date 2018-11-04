@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v7.widget.AppCompatImageView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -139,6 +140,14 @@ public class LicenseFragment extends BaseLiveDataFragment<ValidateViewModel> {
         });
 
         RxUtil.click(btnCommit).subscribe(o -> {
+
+            if(TextUtils.isEmpty(idFrontURL)
+                    || TextUtils.isEmpty(idOppsiteURL)
+                    || TextUtils.isEmpty(driverLicenseURL)
+                    || TextUtils.isEmpty(vehicleLicenseURL)){
+                ToastUtils.showLong(getActivity(),"请上传身份证、驾照、行驶证图片");
+                return;
+            }
             mViewModel.uploadDriverLicense(idFrontURL,idOppsiteURL,driverLicenseURL,vehicleLicenseURL);
         });
 
