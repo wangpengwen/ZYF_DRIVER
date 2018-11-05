@@ -18,11 +18,14 @@ public class VehicleEntity {
 
     public String desc;
 
+    public int iconDrawable;
+
     public boolean isChecked = false;
 
-    public VehicleEntity(String type, String name, String desc) {
+    public VehicleEntity(String type, String name, String desc, int iconDrawable) {
         this.type = type;
         this.name = name;
         this.desc = desc;
+        this.iconDrawable = iconDrawable;
     }
 }

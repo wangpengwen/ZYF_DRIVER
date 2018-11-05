@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="@+id/icon"
         app:layout_constraintBottom_toBottomOf="@+id/icon"
         app:layout_constraintLeft_toRightOf="@+id/tv_vehicle_name"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="15dp"
         android:textSize="14sp"
         android:textColor="@color/color_666666"
         tools:text="厢式车3m*3m"/>

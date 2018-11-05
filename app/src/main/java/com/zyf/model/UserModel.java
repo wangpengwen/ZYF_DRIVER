@@ -141,6 +141,10 @@ public class UserModel {
         return mUserEntity == null ? "" : mUserEntity.driverName;
     }
 
+    public String getRealUserName(){
+        return mUserEntity == null ? "" : TextUtils.isEmpty(mUserEntity.driverRealName) ? getUserName() : mUserEntity.driverRealName;
+    }
+
     public boolean isValidate(){
         return mUserEntity != null && (mUserEntity.driverFlag >= 5);
     }

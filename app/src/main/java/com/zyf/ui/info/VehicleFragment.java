@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.biz.base.BaseLiveDataFragment;
@@ -21,20 +22,19 @@ import com.biz.util.Lists;
 import com.biz.util.RxUtil;
 import com.biz.util.ToastUtils;
 import com.biz.util.Utils;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zyf.driver.ui.R;
 import com.zyf.model.UserModel;
 import com.zyf.model.entity.vehicle.VehicleEntity;
 import com.zyf.ui.authentication.AuthenticationActivity;
-import com.zyf.ui.info.ValidateViewModel;
-import com.zyf.ui.user.order.UserOrderViewModel;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import rx.functions.Action1;
 
 /**
  * Created by TCJK on 2018/5/29.
@@ -81,9 +81,9 @@ public class VehicleFragment extends BaseLiveDataFragment<ValidateViewModel> {
         setTitle("品牌");
 
         data = Lists.newArrayList();
-        data.add(new VehicleEntity("中型","中型车","厢货车3m*3m"));
-        data.add(new VehicleEntity("小型","小型车","厢式车2m*2m"));
-        data.add(new VehicleEntity("微型","微型车","其它运输工具"));
+        data.add(new VehicleEntity("中型","中型","规格 4.2*1.8*1.8/4.2*1.8*0.4\n载重量 蓝牌：1.5-1.9T，黄牌：5-6T",R.drawable.ic_zhongxing));
+        data.add(new VehicleEntity("小型","小型","规格 2.5*1.5*0.4\n载重量 1.5T",R.drawable.ic_xiaoxing));
+        data.add(new VehicleEntity("微型","微型","规格 1.8*1.3*1.1/2.4*1.4*1.2\n载重量 500KG-1000KG",R.drawable.ic_weixing));
 
         VehicleAdapter adapter = new VehicleAdapter(R.layout.item_vehicle,data);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -98,7 +98,7 @@ public class VehicleFragment extends BaseLiveDataFragment<ValidateViewModel> {
             adapter.notifyDataSetChanged();
         });
 
-        tvWelcome.setText(getString(R.string.text_welcome, UserModel.getInstance().getUserName()));
+        tvWelcome.setText(getString(R.string.text_welcome, UserModel.getInstance().getRealUserName()));
 
         mViewModel.getVehicleLiveData().observe(this, o -> {
             IntentBuilder.Builder().setClass(getActivity(), AuthenticationActivity.class).startActivity();
@@ -135,6 +135,10 @@ public class VehicleFragment extends BaseLiveDataFragment<ValidateViewModel> {
 
         @Override
         protected void convert(BaseViewHolder helper, VehicleEntity item) {
+            ImageView icon = helper.getView(R.id.icon);
+            Glide.with(icon).load(item.iconDrawable)
+                    .apply(RequestOptions.circleCropTransform())
+                    .into(icon);
             helper.setTextView(R.id.tv_vehicle_name,item.name);
             helper.setTextView(R.id.tv_desc,item.desc);
             helper.setViewVisible(R.id.iv_checked,item.isChecked ? View.VISIBLE:View.GONE);
