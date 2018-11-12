@@ -1,11 +1,10 @@
 package com.zyf.ui.user.order;
 
 import android.arch.lifecycle.MutableLiveData;
+import android.text.TextUtils;
 
 import com.biz.base.BaseViewModel;
-import com.zyf.model.OrderModel;
 import com.zyf.model.WebOrderModel;
-import com.zyf.model.entity.order.UserOrderListEntity;
 import com.zyf.model.entity.order.WebOrderEntity;
 
 import java.util.List;
@@ -62,7 +61,7 @@ public class WebOrderViewModel extends BaseViewModel {
         submitRequest(WebOrderModel.recoverOrder(), r -> {
 
             if(r.isOk()){
-                if(r.data!=null)
+                if(r.data!=null && !TextUtils.isEmpty(r.data.shrtDlvrState))
                     unfinishOrderLiveData.postValue(r.data);
             }else {
                 sendError(r);
